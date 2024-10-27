@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Physiotherapy Website</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      header {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px;
+        background-color: #ffffff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .logo-container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .logo {
+        width: 150px;
+      }
+
+      .tagline {
+        font-size: 14px;
+        color: #0072ce;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 20px;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+        padding: 5px;
+        background: linear-gradient(
+            to right,
+            rgba(100, 200, 200, 1),
+            rgba(100, 200, 200, 1)
+          ),
+          linear-gradient(
+            to right,
+            rgba(255, 0, 0, 1),
+            rgba(255, 0, 180, 1),
+            rgba(0, 100, 200, 1)
+          );
+        background-size: 100% 3px, 0 3px;
+        background-position: 100% 100%, 0 100%;
+        background-repeat: no-repeat;
+        transition: background-size 400ms;
+      }
+
+      a:hover {
+        background-size: 0 3px, 100% 3px;
+      }
+
+      .header-right {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 5px;
+      }
+
+      .contact-number {
+        font-size: 16px;
+        font-weight: bold;
+        color: #0072ce;
+      }
+
+      .appointment-btn {
+        background-color: #0072ce;
+        color: #ffffff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 20px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .appointment-btn:hover {
+        background-color: #005bb5;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .box1 {
+        margin-top: 10px;
+        border-radius: 10px;
+        border: 1px solid;
+        width: 96%;
+        min-height: 300px;
+        height: auto;
+      }
+
+      .button-17 {
+        align-items: center;
+        appearance: none;
+        background-color: #fff;
+        border-radius: 24px;
+        border-style: none;
+        box-shadow: rgba(0, 0, 0, 0.2) 0 3px 5px -1px,
+          rgba(0, 0, 0, 0.14) 0 6px 10px 0, rgba(0, 0, 0, 0.12) 0 1px 18px 0;
+        box-sizing: border-box;
+        color: #3c4043;
+        cursor: pointer;
+        display: inline-flex;
+        fill: currentcolor;
+        font-family: "Google Sans", Roboto, Arial, sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        height: 48px;
+        justify-content: center;
+        letter-spacing: 0.25px;
+        line-height: normal;
+        max-width: 100%;
+        overflow: visible;
+        padding: 2px 24px;
+        position: relative;
+        text-align: center;
+        text-transform: none;
+        transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1),
+          opacity 15ms linear 30ms,
+          transform 270ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        width: auto;
+        will-change: transform, opacity;
+        z-index: 0;
+      }
+
+      .button-17:hover {
+        background: #f6f9fe;
+        color: #174ea6;
+      }
+
+      .button-17:active {
+        box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%),
+          0 8px 12px 6px rgb(60 64 67 / 15%);
+        outline: none;
+      }
+
+      .button-17:focus {
+        outline: none;
+        border: 2px solid #4285f4;
+      }
+
+      .button-17:not(:disabled) {
+        box-shadow: rgba(60, 64, 67, 0.3) 0 1px 3px 0,
+          rgba(60, 64, 67, 0.15) 0 4px 8px 3px;
+      }
+
+      .button-17:not(:disabled):hover {
+        box-shadow: rgba(60, 64, 67, 0.3) 0 2px 3px 0,
+          rgba(60, 64, 67, 0.15) 0 6px 10px 4px;
+      }
+
+      .button-17:not(:disabled):focus {
+        box-shadow: rgba(60, 64, 67, 0.3) 0 1px 3px 0,
+          rgba(60, 64, 67, 0.15) 0 4px 8px 3px;
+      }
+
+      .button-17:not(:disabled):active {
+        box-shadow: rgba(60, 64, 67, 0.3) 0 4px 4px 0,
+          rgba(60, 64, 67, 0.15) 0 8px 12px 6px;
+      }
+
+      .button-17:disabled {
+        box-shadow: rgba(60, 64, 67, 0.3) 0 1px 3px 0,
+          rgba(60, 64, 67, 0.15) 0 4px 8px 3px;
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+        .hamburger {
+          display: block;
+          cursor: pointer;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <!-- Logo and Tagline -->
+      <div class="logo-container">
+        <img src="logo.png" alt="Pro Physio Logo" class="logo" />
+      </div>
+
+      <!-- Navigation Links -->
+      <nav>
+        <div class="nav-links">
+          <a href="#">Services</a>
+          <a href="#">About Us</a>
+          <!-- <a href="#">Conditions We Treat</a> -->
+          <a href="#">Testimonials</a>
+          <!-- <a href="#">Blog</a> -->
+          <a href="#">Contact Us</a>
+        </div>
+      </nav>
+
+      <!-- Right Section: Contact Number and Appointment Button -->
+      <div class="header-right">
+        <span class="contact-number">Call us: +91 9939121212</span>
+        <button class="appointment-btn">Book Now!</button>
+      </div>
+    </header>
+
+    <div class="box1">
+      <h1>Pro Spine</h1>
+      <h2>Ortho & Neuro Rehab</h2>
+    </div>
+  </body>
+</html>
