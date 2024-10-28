@@ -1,233 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Physiotherapy Website</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: Arial, sans-serif;
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Slider with 2 Slides per Page</title>
+  <style>
+    .slider {
+      position: relative;
+      width: 100%;
+      margin: auto;
+      overflow: hidden;
+      border-radius: 20px;
+    }
+
+    .slider-container {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .slide {
+      flex: 0 0 50%; /* Default: two slides in view */
+      height: 600px;
+      padding: 50px;
+      box-sizing: border-box;
+      margin: 20px 0;
+      background: #888888;
+      border-radius: 20px;
+      text-align: center;
+    }
+
+    .slide img {
+      width: 400px;
+      height: 200px;
+      object-fit: cover;
+      margin-top: 20px;
+    }
+
+    .arrows {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+    }
+
+    .arrow {
+      background-color: #ddd;
+      color: #ccc;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 50px;
+      transition: color 0.9s ease, box-shadow 0.4s ease;
+    }
+
+    .arrow:hover {
+      color: #005bb5;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .dots {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .dot {
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: rgb(255, 255, 255);
+      margin: 0 5px;
+      cursor: pointer;
+    }
+
+    .dot.active {
+      background: rgb(255, 153, 0);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .slide {
+        flex: 0 0 100%; /* Show one slide at a time on small screens */
       }
+    }
+  </style>
+</head>
+<body>
 
-      header {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px 40px;
-        background-color: #ffffff;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      }
-
-      .logo-container {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-
-      .logo {
-        width: 150px;
-      }
-
-      .tagline {
-        font-size: 14px;
-        color: #0072ce;
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 20px;
-      }
-
-      a {
-        color: inherit;
-        text-decoration: none;
-        padding: 5px;
-        background: linear-gradient(
-            to right,
-            rgba(100, 200, 200, 1),
-            rgba(100, 200, 200, 1)
-          ),
-          linear-gradient(
-            to right,
-            rgba(255, 0, 0, 1),
-            rgba(255, 0, 180, 1),
-            rgba(0, 100, 200, 1)
-          );
-        background-size: 100% 3px, 0 3px;
-        background-position: 100% 100%, 0 100%;
-        background-repeat: no-repeat;
-        transition: background-size 400ms;
-      }
-
-      a:hover {
-        background-size: 0 3px, 100% 3px;
-      }
-
-      .header-right {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        gap: 5px;
-      }
-
-      .contact-number {
-        font-size: 16px;
-        font-weight: bold;
-        color: #0072ce;
-      }
-
-      .appointment-btn {
-        background-color: #0072ce;
-        color: #ffffff;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 20px;
-        font-size: 16px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: background-color 0.3s;
-      }
-
-      .appointment-btn:hover {
-        background-color: #005bb5;
-      }
-
-      body {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-      .box1 {
-        margin-top: 10px;
-        border-radius: 10px;
-        border: 1px solid;
-        width: 96%;
-        min-height: 300px;
-        height: auto;
-      }
-
-      .button-17 {
-        align-items: center;
-        appearance: none;
-        background-color: #fff;
-        border-radius: 24px;
-        border-style: none;
-        box-shadow: rgba(0, 0, 0, 0.2) 0 3px 5px -1px,
-          rgba(0, 0, 0, 0.14) 0 6px 10px 0, rgba(0, 0, 0, 0.12) 0 1px 18px 0;
-        box-sizing: border-box;
-        color: #3c4043;
-        cursor: pointer;
-        display: inline-flex;
-        fill: currentcolor;
-        font-family: "Google Sans", Roboto, Arial, sans-serif;
-        font-size: 14px;
-        font-weight: 500;
-        height: 48px;
-        justify-content: center;
-        letter-spacing: 0.25px;
-        line-height: normal;
-        max-width: 100%;
-        overflow: visible;
-        padding: 2px 24px;
-        position: relative;
-        text-align: center;
-        text-transform: none;
-        transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1),
-          opacity 15ms linear 30ms,
-          transform 270ms cubic-bezier(0, 0, 0.2, 1) 0ms;
-        user-select: none;
-        -webkit-user-select: none;
-        touch-action: manipulation;
-        width: auto;
-        will-change: transform, opacity;
-        z-index: 0;
-      }
-
-      .button-17:hover {
-        background: #f6f9fe;
-        color: #174ea6;
-      }
-
-      .button-17:active {
-        box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%),
-          0 8px 12px 6px rgb(60 64 67 / 15%);
-        outline: none;
-      }
-
-      .button-17:focus {
-        outline: none;
-        border: 2px solid #4285f4;
-      }
-
-      .button-17:not(:disabled) {
-        box-shadow: rgba(60, 64, 67, 0.3) 0 1px 3px 0,
-          rgba(60, 64, 67, 0.15) 0 4px 8px 3px;
-      }
-
-      .button-17:not(:disabled):hover {
-        box-shadow: rgba(60, 64, 67, 0.3) 0 2px 3px 0,
-          rgba(60, 64, 67, 0.15) 0 6px 10px 4px;
-      }
-
-      .button-17:not(:disabled):focus {
-        box-shadow: rgba(60, 64, 67, 0.3) 0 1px 3px 0,
-          rgba(60, 64, 67, 0.15) 0 4px 8px 3px;
-      }
-
-      .button-17:not(:disabled):active {
-        box-shadow: rgba(60, 64, 67, 0.3) 0 4px 4px 0,
-          rgba(60, 64, 67, 0.15) 0 8px 12px 6px;
-      }
-
-      .button-17:disabled {
-        box-shadow: rgba(60, 64, 67, 0.3) 0 1px 3px 0,
-          rgba(60, 64, 67, 0.15) 0 4px 8px 3px;
-      }
-
-      @media (max-width: 768px) {
-        .nav-links {
-          display: none;
-        }
-        .hamburger {
-          display: block;
-          cursor: pointer;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <!-- Logo and Tagline -->
-      <div class="logo-container">
-        <img src="logo.png" alt="Pro Physio Logo" class="logo" />
-      </div>
-
-      <!-- Navigation Links -->
-      <nav>
-        <div class="nav-links">
-          <a href="#">Services</a>
-          <a href="#">About Us</a>
-          <!-- <a href="#">Conditions We Treat</a> -->
-          <a href="#">Testimonials</a>
-          <!-- <a href="#">Blog</a> -->
-          <a href="#">Contact Us</a>
-        </div>
-      </nav>
-
-      <!-- Right Section: Contact Number and Appointment Button -->
-      <div class="header-right">
-        <span class="contact-number">Call us: +91 9939121212</span>
-        <button class="appointment-btn">Book Now!</button>
-      </div>
-    </header>
-
-    <div class="box1">
-      <h1>Pro Spine</h1>
-      <h2>Ortho & Neuro Rehab</h2>
+<div class="slider">
+  <div class="slider-container">
+    <div class="slide">
+      <h3>Physiotherapy</h3>
+      <img src="phy1.jpeg" alt="Physiotherapy">
+      <p>This is the content of card 1.</p>
     </div>
-  </body>
+    <div class="slide">
+      <h3>Card 2</h3>
+      <p>This is the content of card 2.</p>
+    </div>
+    <div class="slide">
+      <h3>Card 3</h3>
+      <p>This is the content of card 3.</p>
+    </div>
+    <div class="slide">
+      <h3>Card 4</h3>
+      <p>This is the content of card 4.</p>
+    </div>
+  </div>
+  <div class="arrows">
+    <button class="arrow left" id="prev">&#10094;</button>
+    <button class="arrow right" id="next">&#10095;</button>
+  </div>
+  <div class="dots"></div>
+</div>
+
+<script>
+  const slides = document.querySelectorAll(".slide");
+  const dotsContainer = document.querySelector(".dots");
+  const prevButton = document.getElementById("prev");
+  const nextButton = document.getElementById("next");
+  let currentIndex = 0;
+
+  // Determine the number of slides per view based on screen width
+  const getSlidesPerView = () => (window.innerWidth <= 768 ? 1 : 2);
+  let slidesPerView = getSlidesPerView();
+
+  // Create dots for each page
+  const updateDotsContainer = () => {
+    dotsContainer.innerHTML = ''; // Clear existing dots
+    const totalPages = Math.ceil(slides.length / slidesPerView);
+
+    for (let i = 0; i < totalPages; i++) {
+      const dot = document.createElement("span");
+      dot.classList.add("dot");
+      dot.dataset.index = i;
+      dot.addEventListener("click", () => goToSlide(i));
+      dotsContainer.appendChild(dot);
+    }
+  };
+
+  const updateDots = () => {
+    const dots = document.querySelectorAll(".dot");
+    dots.forEach((dot) => dot.classList.remove("active"));
+    dots[Math.floor(currentIndex / slidesPerView)].classList.add("active");
+  };
+
+  const showSlide = (pageIndex) => {
+    currentIndex = pageIndex * slidesPerView;
+    const sliderContainer = document.querySelector(".slider-container");
+    const offset = (pageIndex * 100) / slidesPerView; // Adjust offset based on slides per view
+    sliderContainer.style.transform = `translateX(-${offset}%)`;
+    updateDots();
+  };
+
+  const goToSlide = (pageIndex) => {
+    showSlide(pageIndex);
+  };
+
+  // Event listeners for navigation
+  prevButton.addEventListener("click", () => {
+    const totalPages = Math.ceil(slides.length / slidesPerView);
+    const newPageIndex = (Math.floor(currentIndex / slidesPerView) - 1 + totalPages) % totalPages;
+    showSlide(newPageIndex);
+  });
+
+  nextButton.addEventListener("click", () => {
+    const totalPages = Math.ceil(slides.length / slidesPerView);
+    const newPageIndex = (Math.floor(currentIndex / slidesPerView) + 1) % totalPages;
+    showSlide(newPageIndex);
+  });
+
+  // Responsive adjustments on resize
+  const handleResize = () => {
+    slidesPerView = getSlidesPerView();
+    updateDotsContainer();
+    showSlide(Math.floor(currentIndex / slidesPerView));
+  };
+
+  // Initialize
+  window.addEventListener("resize", handleResize);
+  handleResize(); // Initial setup
+
+</script>
+
+</body>
 </html>
