@@ -525,11 +525,19 @@ img {
 }
 
 @media (max-width: 768px) {
+
+  header{
+    max-height: 75px;
+  }
+
   .nav-links {
     display: none;
   }
 
   .header-right .contact-number {
+    position: absolute;
+    top: 10px;
+    right: 10px;
     font-size: 0.7em;
   }
 
@@ -538,6 +546,8 @@ img {
   }
 
   .box1 {
+    margin-top: 90px;
+    margin-bottom: 20px;
     padding: 20px;
     min-height: 250px;
     max-height: 500px;
@@ -671,16 +681,16 @@ img {
   .serv1 {
     padding: 2px;
     margin: 0px;
-    max-width: 43%;
+    max-width: 40%;
   }
 
   .serv1 a {
-    font-size: 0.9em;
+    font-size: 0.8em;
   }
 
   .serv1 img {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     margin-right: 0px;
   }
 }
