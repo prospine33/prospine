@@ -450,8 +450,8 @@ img {
 .slide {
   flex: 30%;
   min-width: 20%;
-  height: 600px;
-  padding: 30px;
+  height: auto;
+  padding: 15px;
   box-sizing: border-box;
   margin: 20px 10px;
   background: #fff;
@@ -460,14 +460,14 @@ img {
 }
 
 .slide img {
-  width: 400px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
   object-fit: cover;
   margin-top: 20px;
 }
 
 .slide a {
-  margin-top: 0;
+  /* margin-bottom: 10px; */
   font-size: 1.2em;
 }
 
@@ -479,6 +479,7 @@ img {
 }
 
 .slide p {
+  margin-bottom: 10px;
   text-align: center;
 }
 .arrows {
@@ -628,7 +629,12 @@ img {
     padding: 15px;
   }
   .box4 h2 {
-    font-size: 1.8em;
+    font-size: 1.5em;
+  }
+
+  .box4 p{
+    font-size: 1em;
+    margin-bottom: 5px;
   }
   .slide {
     flex: 0 0 100%; /* Show one slide at a time on small screens */
@@ -670,27 +676,33 @@ img {
   }
 
   .serv {
-    display: flex;
-    flex-wrap: wrap;
     padding: 0px;
     margin: 0;
+    display: flex;
+    flex-wrap: wrap;
     margin-top: 10px;
     margin-bottom: 20px;
   }
 
   .serv1 {
-    padding: 2px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0px;
     margin: 0px;
     max-width: 40%;
+    margin-right: 0px;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
   }
 
   .serv1 a {
-    font-size: 0.8em;
+    font-size: 0.7em;
   }
 
   .serv1 img {
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     margin-right: 0px;
   }
 }
