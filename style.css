@@ -680,8 +680,9 @@ body .box5 {
 
 .call-action .phone-icon {
   font-size: 1.5em;
-  margin-right: 18px;
-  margin-bottom: 20px;
+  /* margin-right: 18px; */
+  margin-left: 10px;
+  /* margin-bottom: 20px; */
 }
 
 .testimonial {
@@ -788,13 +789,13 @@ video {
 }
 
 .footer {
+  width: 100%;
   background-color: #000;
   color: #fff;
   padding: 40px 20px;
 }
 
 .footer-content {
-  /* max-width: 1200px; */
   margin: 0 auto;
 }
 
@@ -805,33 +806,84 @@ video {
   justify-content: space-between;
   transform: translate(5%, 0);
   padding: 5px;
-  margin: 10px;
+  /* margin: 10px; */
   /* border: 1px solid; */
 }
 
 .footer-quote h2 {
   font-size: 30px;
   font-weight: 700;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   color: #ddd;
 }
 
 .footer-quote img {
+  position: relative;
+  margin-top: -50px;
+  margin-bottom: 30px;
   width: 250px;
 }
 
 .hr {
   border: none;
-  height: 0.5px;
+  height: 3px;
   background: linear-gradient(
-    to right,
-    #ff7e5f,
-    #feb47b
-  ); /* Set the gradient colors */
-  margin: 20px 0;
-  margin-bottom: 80px;
+    90deg,
+    #d383a3,
+    #b4778f,
+    #ff4b2b,
+    #927aa5,
+    #6f91aa,
+    #d383a3,
+    #79a6c1,
+    #ff416c
+  );
+  background-size: 400% 100%;
+  animation: gradientShift 8s linear infinite;
+  margin-bottom: 30px;
+  margin-top: -20px;
 }
 
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 0%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+.hr2 {
+  border: none;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    #ff7eb3,
+    /* Vibrant pink */ #ff65a3,
+    /* Deep pink */ #7afcff,
+    /* Bright aqua */ #32ff7e,
+    /* Bright green */ #fcb045,
+    /* Warm orange */ #ff7eb3 /* Match the start color for seamless loop */
+  );
+  background-size: 400% 100%;
+  animation: gradientShift 8s linear infinite;
+  margin-top: 30px;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 0%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
 .footer-sections {
   display: flex;
   flex-wrap: wrap;
@@ -925,38 +977,56 @@ video {
   z-index: 1;
   /* Sit on top */
   left: 0;
-  top: 50px;
+  /* top: 50px; */
   width: 100%;
   /* Full width */
   height: 100%;
   /* Full height */
   overflow: auto;
   /* Enable scroll if needed */
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.5);
   /* Dark overlay */
 }
 
+/* Modal Content with Pop-Up Animation */
 .modal-content {
-  /* background-color: #ffffff; */
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(50%, -50%);
   margin: 5% auto;
-  /* 5% from the top and centered */
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   width: 90%;
-  /* Could be more or less, depending on screen size */
   max-width: 600px;
-
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
-  background-color: rgba(255, 255, 255, 0.624);
+  background-color: rgba(37, 37, 37, 0.626);
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.125);
-
-  /* Set a max width */
+  animation: zoomIn 0.8s ease forwards; /* Apply animation on open */
+  opacity: 0; /* Start hidden */
 }
 
-.model-content h2 {
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.5); /* Start small */
+  }
+  to {
+    opacity: 1;
+    transform: scale(1); /* End at original size */
+  }
+}
+/* Display the modal and trigger the animation */
+.modal.open .modal-content {
+  opacity: 1;
+  animation: zoomIn 0.8s ease forwards;
+}
+
+.modal-content h2 {
+  color: #fff;
   text-align: center;
   align-items: center;
 }
@@ -965,6 +1035,7 @@ label {
   font-weight: bold;
   margin-bottom: 5px;
   display: block;
+  color: #fff;
   /* Make labels block elements */
 }
 
@@ -1024,7 +1095,7 @@ button[type="submit"]:hover {
 }
 
 .close {
-  color: #444;
+  color: #ffffff;
   float: right;
   font-size: 28px;
   font-weight: bold;
@@ -1032,7 +1103,7 @@ button[type="submit"]:hover {
 
 .close:hover,
 .close:focus {
-  color: #000;
+  color: #dddddd;
   /* Change close button color on hover */
   text-decoration: none;
   cursor: pointer;
@@ -1429,6 +1500,9 @@ textarea {
   }
 
   .modal-content {
+    position: absolute;
+    top: 10%;
+    left: 2.5%;
     margin: 10% auto; /* Reduced margin for mobile */
     padding: 10px; /* Reduced padding */
     width: 95%; /* Almost full width */
