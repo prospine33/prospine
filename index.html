@@ -16,19 +16,26 @@
     </div>
 
     <nav>
-      <div class="nav-links">
-        <a href="#">Services</a>
-        <a href="#">About Us</a>
-
-        <a href="#">Testimonials</a>
-
-        <a href="#">Contact Us</a>
+      <div class="nav-container">
+        <div class="hamburger" id="hamburger">
+          &#9776; <!-- Hamburger icon -->
+        </div>
+        <div class="nav-links" id="navLinks">
+          <a href="#">Why Pro Spine</a>
+          <a href="#">Conditions We Treat</a>
+          <a href="#">Our Team</a>
+          <a href="#">Testimonials</a>
+          <a href="#">Events</a>
+          <a href="#">Career</a>
+          <a href="#">About Us</a>
+          <a href="#">Contact Us</a>
+        </div>
       </div>
     </nav>
 
     <div class="header-right">
       <a href="tel:+919939121212" class="contact-number">Call us: +91 9939121212</a>
-      <button class="appointment-btn">Book Now!</button>
+      <!-- <button class="appointment-btn">Book Now!</button> -->
     </div>
   </header>
 
@@ -38,13 +45,89 @@
         <p>Welcome to,</p>
         Pro Spine.
       </h1>
-      <h2>Ortho & Neuro Rehab Centre</h2>
+      <h2>Ortho & Neuro Rehab</h2>
       <p>Your pathway to holistic recovery and improved well being.</p>
       <br />
-      <button class="button-17" role="button">Book an Appointment</button>
-      <hr />
+      <button class="btn" id="openModal" role="button">Book an Appointment</button>
+      <hr class="hr">
     </div>
   </div>
+
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <span class="close" id="closeModal">&times;</span>
+      <h2>Book an Appointment</h2>
+      <form id="appointmentForm">
+
+        <div class="form-step" id="step1">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required>
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+
+          <label for="mobile">Mobile:</label>
+          <input type="tel" id="mobile" name="mobile" required>
+
+          <label for="city">City:</label>
+          <input type="text" id="city" name="city" required>
+
+          <button type="button" id="continue1">Continue</button>
+        </div>
+
+
+        <div class="form-step" id="step2" style="display: none;">
+          <label for="symptom">Your Current Health Condition:</label>
+          <textarea id="symptom" name="symptom"
+            placeholder="Tell us about your current health condition. Type none if you don't have any."
+            required></textarea>
+
+          <label for="gender">Gender:</label>
+          <select id="gender" name="gender" required>
+            <option value="" disabled selected>Select your gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+
+          <label for="age">Age:</label>
+          <input type="number" id="age" name="age" required>
+
+          <button type="button" id="back1">Back</button>
+          <button type="button" id="continue2">Continue</button>
+        </div>
+
+
+        <div class="form-step" id="step3" style="display: none;">
+          <label for="date">Select Date:</label>
+          <input type="date" id="date" name="date" required>
+
+          <label for="time">Select Time:</label>
+          <input type="time" id="time" name="time" required>
+
+          <button type="button" id="back2">Back</button>
+          <button type="button" id="continue3">Continue</button>
+        </div>
+
+        <div class="form-step" id="review" style="display: none;">
+          <h3>Review Your Details</h3>
+          <p><strong>Name:</strong> <span id="reviewName"></span></p>
+          <p><strong>Email:</strong> <span id="reviewEmail"></span></p>
+          <p><strong>Mobile:</strong> <span id="reviewMobile"></span></p>
+          <p><strong>City:</strong> <span id="reviewCity"></span></p>
+          <p><strong>Gender:</strong> <span id="reviewGender"></span></p>
+          <p><strong>Age:</strong> <span id="reviewAge"></span></p>
+          <p><strong>Current Health Condition:</strong> <span id="reviewSymptom"></span></p>
+          <p><strong>Date:</strong> <span id="reviewDate"></span></p>
+          <p><strong>Time:</strong> <span id="reviewTime"></span></p>
+
+          <button type="button" id="back3">Back</button>
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
 
   <div class="box2">
     <div class="inner-box2">
@@ -72,7 +155,7 @@
   <div class="box3">
     <h2>Providing a High Level of Care</h2>
     <p>
-      At Manipal Physiotherapy, we are a team of multidisciplinary physical
+      At Pro Spine, we are a team of multidisciplinary physical
       therapy professionals dedicated to helping our patients improve their
       health, wellbeing, and quality of life. We believe in taking a holistic
       approach to healthcare, working collaboratively across different
@@ -87,8 +170,8 @@
     <div class="slider">
       <div class="slider-container">
         <div class="slide active">
-          <h3>Physiotherapy</h3>
-          <img src="phy1.jpeg" alt="Physiotherapy">
+          <h3>Non-Invasive Robotic Spinal Decompression Therapy</h3>
+          <img src="image/noninv.png" alt="Physiotherapy">
           <p>Physiotherapy helps relieve pain, improve mobility, and accelerate recovery from injuries. At our clinic,
             we offer personalized treatment plans, guided by experienced professionals who use advanced techniques and
             equipment to optimize your healing journey. With our patient-centered approach, you can regain strength and
@@ -98,15 +181,22 @@
         </div>
         <div class="slide">
           <h3>Orthopedic Manipulation Therapy</h3>
-          <img src="ortho.png" alt="ortho">
+          <img src="image/ortho.png" alt="ortho">
           <p>This is the content of card 2.</p>
         </div>
         <div class="slide">
-          <h3>Card 3</h3>
+          <h3>Personalized Exercise Program</h3>
+          <img src="image/phy1.jpeg" alt="">
           <p>This is the content of card 3.</p>
         </div>
         <div class="slide">
-          <h3>Card 4</h3>
+          <h3>Electro Therapy</h3>
+          <img src="image/electro.webp" alt="">
+          <p>This is the content of card 4.</p>
+        </div>
+        <div class="slide">
+          <h3>Electrodiagnosis</h3>
+          <img src="image/electrodiagnostic-icon.png" alt="">
           <p>This is the content of card 4.</p>
         </div>
       </div>
@@ -117,34 +207,41 @@
       <div class="dots"></div>
     </div>
     <br>
-    <h3>Explore more of our services</h3>
+    <h3 class="servh">Conditions We Treat</h3>
     <div class="serv">
       <div class="serv1">
-        <img src="Cardiovascular.png" alt="">
-        <a href="#">Cardiovascular Physiotherapy</a>
+        <a href="#">Herniated Disc</a>
       </div>
       <div class="serv1">
-        <img src="Chest_physiotherapy.png" alt="">
-        <a href="#">Chest Physiotherapy</a>
+        <a href="#">Spondylolisthesis</a>
       </div>
       <div class="serv1">
-        <img src="electrodiagnostic-icon.png" alt="">
-        <a href="#">Electrodiagnosis Therapy</a>
+        <a href="#">Degenerative Disc</a>
       </div>
       <div class="serv1">
-        <img src="Neurological_Physiotherapy.png" alt="">
-        <a href="#">Neurological Physiotherapy</a>
+        <a href="#">Brachial Neuralgia</a>
       </div>
       <div class="serv1">
-        <img src="obesity.png" alt="">
-        <a href="#">Obesity Physiotherapy</a>
+        <a href="#">Disc Prolapse</a>
       </div>
       <div class="serv1">
-        <img src="Orthopedic_Physiotherapy.png" alt="">
-        <a href="#">Orthopedic PhysioTherapy</a>
+        <a href="#">Retrolisthesis</a>
+      </div>
+      <div class="serv1">
+        <a href="#">Scoliosis</a>
+      </div>
+      <div class="serv1">
+        <a href="#">Radiculopathy</a>
+      </div>
+      <div class="serv1">
+        <a href="#">Thecal Compression</a>
+      </div>
+      <div class="serv1">
+        <a href="#">Facet Joint Syndrome</a>
       </div>
     </div>
-    <a href="services.html" class="link">See All Services <img src="rarr.svg" alt="right-arrow" class="rarrow"></a>
+    <a href="services.html" class="link servlink">See All Services <img src="rarr.svg" alt="right-arrow"
+        class="rarrow"></a>
   </div>
   <div class="box5">
     <div class="choose">
@@ -152,7 +249,7 @@
       <p class="subtitle">Many Solutions Under One Roof</p>
 
       <p class="description">
-        At Manipal Physiotherapy, we believe that education and communication are key components of effective
+        At Pro Spine, we believe that education and communication are key components of effective
         healthcare.
         We take the time to educate our patients about their conditions, treatment options, and preventative measures
         they
@@ -165,6 +262,8 @@
         <li class="feature-item"><i class="icon"></i> Friendly and Kind Staff</li>
         <li class="feature-item"><i class="icon"></i> Affordable Prices and Guaranteed Healing</li>
       </ul>
+      <br>
+      <a href="#" class="link servlink">Read More</a>
     </div>
     <div class="choose choose2">
       <h2 class="title">How We Work</h2>
@@ -217,23 +316,194 @@
 
   </div>
 
-  <div class="session-container">
-    <h2 class="session-title">Getting a physiotherapy session at your home is easier than you think!</h2>
+  <div class="testimonial">
+    <h2>What Our Patients Say</h2>
+    <div class="vidsslider">
+      <div class="video-container" id="video1">
+        <video src="video/vids1.mp4" controls>
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="video-container" id="video2">
+        <video src="video/vids2.mp4" controls>
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="video-container" id="video3">
+        <video src="video/vids3.mp4" controls>
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+    <br>
+    <div class="controlss">
+      <button class="btn btn1" id="prevBtn">Previous</button>
+      <button class="btn btn1" id="nextBtn">Next</button>
+    </div>
 
 
-    <a href="tel:+919939121212" class="call-action">
-      <i class="fas fa-phone phone-icon"></i> Call us now at +91 9939121212
-    </a>
-    <p class="session-description">
-      You will get an instant call from our care manager. Once we understand your needs, we’ll assign the best
-      therapist who suits your requirements.
-    </p>
+    <h2 class="rev">Patients Reviews</h2>
+    <div class="review">
+
+      <!-- Single Review -->
+      <div class="review-item">
+        <div class="review-header">
+          <div>
+            <h3 class="review-username">Priyanshu Rajput</h3>
+            <div class="review-rating">
+              <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+            </div>
+          </div>
+        </div>
+        <p class="review-text">
+          "The best for Physiotherapy in Bhagalpur Bihar. Staffs are very well literate and Well Behaved. You Can
+          visit.I
+          also got best Cured here."
+        </p>
+      </div>
+      <div class="review-item">
+        <div class="review-header">
+          <div>
+            <h3 class="review-username">Anshu Singh</h3>
+            <div class="review-rating">
+              <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+            </div>
+          </div>
+        </div>
+        <p class="review-text">
+          "The best physiotherapy centre at bhagalpur. Dr Pranav is caring, well qualified & experienced. His team is
+          dedicated .Equipped with latest equipments, neat and clean. All staffs are well behaved and sincere."
+        </p>
+      </div>
+      <div class="review-item">
+        <div class="review-header">
+          <div>
+            <h3 class="review-username">Sweta Munka</h3>
+            <div class="review-rating">
+              <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+            </div>
+          </div>
+        </div>
+        <p class="review-text">
+
+          "Manipal is the best physiotherapy center in Bhagalpur....Had an amazing experience here..Doctor Pranav has
+          great
+          expertise in this field...He examined my problem really efficiently and helped me with all my issues..Even the
+          staff memebers are very supportive and deal with you very patiently..They use the best technology for your
+          treatment.."
+
+        </p>
+      </div>
+
+      <!-- Add more reviews as needed -->
+    </div>
+
+
+
+    <div class="session-container">
+      <h2 class="session-title">Getting a physiotherapy session at your home is easier than you think!</h2>
+
+
+      <a href="tel:+919939121212" class="call-action">
+        <i class="fas fa-phone phone-icon"></i> Call us now at +91 8002421212
+      </a>
+      <p class="session-description">
+        You will get an instant call from our care manager. Once we understand your needs, we’ll assign the best
+        therapist who suits your requirements.
+      </p>
+    </div>
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-quote">
+          <h2>"Let challenges shape you, not stop you."</h2>
+          <img src="logo.png" alt="Logo" class="logo">
+        </div>
+        <hr class="hr">
+        <div class="footer-sections">
+          <div class="about-section footer-section">
+            <h3>About us</h3>
+            <ul>
+              <li><a href="#">Vision</a></li>
+              <li><a href="#">People</a></li>
+              <li><a href="#">Partners</a></li>
+              <li><a href="#">Awards & Affiliations</a></li>
+              <li><a href="#">Testimonials</a></li>
+              <li><a href="#">Locations</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3>Contact Us</h3>
+            <ul>
+              <li><a href="#">Locations</a></li>
+              <li><a href="#">Contacts</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3>Conditions We Treat</h3>
+            <ul>
+              <li><a href="#">Herniated Disc</a></li>
+              <li><a href="#">Spondylolisthesis</a></li>
+              <li><a href="#">Degenerative Disc</a></li>
+              <li><a href="#">Brachial Neuralgia</a></li>
+              <li><a href="#">Disc Prolapse</a></li>
+              <li><a href="#">Retrolisthesis</a></li>
+              <li><a href="#">Scoliosis</a></li>
+              <li><a href="#">Facet Joint Syndrome</a></li>
+              <li><a href="#">Thecal Compression</a></li>
+              <a href="#" class="link">See More</a>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="#">Why Pro Spine</a></li>
+              <li><a href="#">Portfolio</a></li>
+              <li><a href="#">Events</a></li>
+              <li><a href="#">Carrier</a></li>
+              <li><a href="#">Manipal Physiotherapy</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Copyright © 2025, ProSpine. All rights reserved.</p>
+        <ul class="footer-links">
+          <li><a href="#">Terms & conditions</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+        <div class="social-icons">
+          <a href="#"><img src="image/facebook-icon.png" alt="Facebook"></a>
+          <a href="#"><img src="image/twitter-icon.png" alt="Twitter"></a>
+          <a href="#"><img src="image/icons8-instagram-48.png" alt="Instagram"></a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const hamburger = document.getElementById("hamburger");
+        const navLinks = document.getElementById("navLinks");
+
+        // Toggle the menu on hamburger click
+        hamburger.addEventListener("click", () => {
+          navLinks.classList.toggle("active");
+          hamburger.classList.toggle("active"); // Rotate the hamburger icon to 'X'
+        });
+
+        // Close the menu when clicking outside
+        document.addEventListener("click", (event) => {
+          const isClickInside = hamburger.contains(event.target) || navLinks.contains(event.target);
+          if (!isClickInside) {
+            navLinks.classList.remove("active");
+            hamburger.classList.remove("active");
+          }
+        });
+      });
+    </script>
+
   </div>
-
-<footer>
-  
-</footer>
-  <script src="script.js"></script>
 </body>
 
 </html>
