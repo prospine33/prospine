@@ -195,6 +195,17 @@
 }
 
 @media screen and (max-width: 768px) {
+  .bbox {
+    min-height: 100%;
+  }
+  .box1 h1 {
+    font-size: 1.6em;
+  }
+
+  .box1 .btn {
+    padding: 10px 15px;
+  }
+
   .slider-container {
     padding: 20px;
     height: 75px;
