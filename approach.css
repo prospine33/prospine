@@ -1,0 +1,178 @@
+/* header {
+  height: 100px;
+} */
+
+.box1 {
+  background: linear-gradient(to right, #fec3d0c9, #b1e9ffc5);
+  border-radius: 0px;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.box1 p{
+  max-width: 100%;
+  /* border: 1px solid; */
+}
+
+
+.section {
+  width: 96%;
+  padding: 40px;
+  background-color: #ffffff;
+  margin: 10px auto;
+  margin-top: 30px;
+  border: 1px solid #dddd;
+  border-radius: 10px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.section2 {
+  margin-bottom: 50px;
+}
+
+.section-heading {
+  font-size: 2.5em;
+  color: #333;
+  margin-bottom: 50px;
+  align-items: center;
+  text-align: center;
+}
+
+.wrapperr {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.technology-item {
+  margin: 20px;
+  width: 45%;
+  margin-bottom: 30px;
+}
+
+.technology-item p {
+  font-size: 1.5em;
+}
+
+.wrappeer {
+  display: flex;
+
+  width: 110%;
+
+  margin-bottom: 20px;
+}
+
+.technology-item2 > div {
+  flex: 1;
+}
+
+.text-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 20px;
+}
+
+.subheading {
+  font-size: 1.9em;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1em;
+  color: #444;
+  margin-top: 0;
+}
+
+.technology-image {
+  width: 50%;
+  height: auto;
+  border-radius: 10px;
+  margin-left: 50px;
+}
+
+@media (max-width: 768px) {
+  header {
+    height: 70px;
+  }
+
+  .section {
+    height: auto;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .technology-item {
+    width: 100%;
+    margin: 0;
+  }
+
+  .section-heading {
+    font-size: 1.3em;
+  }
+
+  .technology-item p {
+    font-size: 1.2em;
+  }
+
+  .technology-image {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
+  .wrappeer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .subheading {
+    font-size: 1em;
+    color: #666;
+    margin-bottom: 10px;
+  }
+
+  .technology-item p {
+    font-size: 0.8em;
+    color: #444;
+    margin-top: 0;
+  }
+
+  .technology-image {
+    width: 80%;
+    height: auto;
+    margin-top: 30px;
+  }
+}
+
+@media (min-width: 769px) {
+  .technology-item {
+    width: 45%;
+  }
+
+  .technology-item p {
+    font-size: 1.5em;
+  }
+
+  .technology-image {
+    width: 50%;
+    height: auto;
+    margin-left: 50px;
+  }
+
+  .wrappeer {
+    display: flex;
+  }
+
+  .subheading {
+    font-size: 1em;
+    color: #666;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 1em;
+    color: #444;
+    margin-top: 0;
+  }
+}

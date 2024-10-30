@@ -1,0 +1,60 @@
+.box1 {
+  background-image: linear-gradient(to right, #fed6e3 0%, #a8edea 100%);
+  height: auto;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+.box1 .inner-box {
+}
+.box1 p {
+  max-width: 100%;
+}
+
+.box2 {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.box2 h2 {
+  margin-top: 20px;
+  font-size: 2em;
+}
+
+.box2 h3 {
+  margin: 10px;
+  font-size: 1.5em;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.per {
+  display: flex;
+
+  padding: 10px;
+}
+
+.per p {
+  padding: 20px;
+  width: 50%;
+}
+
+@media screen and (max-width: 768px) {
+  .box1 {
+    min-height: 670px;
+  }
+  .box2 h2 {
+    font-size: 1.5em;
+  }
+  .per {
+    flex-direction: column;
+  }
+  .per p {
+    width: 100%;
+  }
+
+  .box2 h3 {
+    font-size: 1em;
+  }
+}

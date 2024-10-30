@@ -18,18 +18,17 @@
       rgba(255, 0, 180, 1),
       rgba(0, 100, 200, 1)
     );
-  background-size: 100% 3px, 100% 3px; /* Show both gradients fully */
+  background-size: 100% 3px, 100% 3px;
   background-position: 100% 100%, 0 100%;
   background-repeat: no-repeat;
 }
 
 .link.active {
-  background-size: 0 3px, 100% 3px; /* Active link shows all colors */
+  background-size: 0 3px, 100% 3px;
 }
 
 .box1 {
-  /* margin-top: 150px; */
-  border-radius: 10px;
+  border-radius: 0px;
   border: 1px solid #ddd;
   width: 100%;
   min-height: 600px;
@@ -37,17 +36,28 @@
   background: linear-gradient(
     to right,
     rgba(255, 223, 186, 0.582),
-    /* Light Peach */ rgba(224, 187, 228, 0.639),
-    /* Pastel Lavender */ rgba(186, 235, 255, 0.577) /* Soft Sky Blue */
+    rgba(224, 187, 228, 0.639),
+    rgba(186, 235, 255, 0.577)
   );
 
   display: flex;
   padding: 30px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin-bottom: 0px;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.box1 p {
+  max-width: 100%;
+  /* border: 1px solid; */
 }
 
 .inner-box h1 {
+  font-size: 60px;
+  font-weight: bold;
+  margin-bottom: 20px;
   color: #000;
 }
 
@@ -62,7 +72,6 @@
   font-weight: 500;
 }
 
-/* Container for the slider */
 .slider-container {
   display: flex;
   align-items: center;
@@ -76,7 +85,6 @@
   padding: 20px;
 }
 
-/* Navigation buttons */
 .nav-button {
   background: linear-gradient(to right, #d4fcff, #cce2ff);
   border: none;
@@ -98,7 +106,6 @@
   right: 0;
 }
 
-/* Slider styling */
 .slider {
   max-width: 80%;
   display: flex;
@@ -106,7 +113,6 @@
   transition: transform 0.3s ease;
 }
 
-/* Link styling */
 .slider-link {
   text-align: center;
   padding: 20px;
@@ -133,11 +139,7 @@
   margin-bottom: 50px;
   padding: 50px;
   border-radius: 10px;
-  background: linear-gradient(
-    to right,
-    #d4fcff,
-    #cce2ff
-  ); /* Light aqua to soft sky blue */
+  background: linear-gradient(to right, #d4fcff, #cce2ff);
 }
 
 .servh {
@@ -151,12 +153,7 @@
   align-items: center;
   text-align: center;
   justify-content: center;
-  /* background: rgb(255, 255, 255); */
   border-radius: 16px;
-  /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2); */
-  /* backdrop-filter: blur(7.7px); */
-  /* -webkit-backdrop-filter: blur(7.7px); */
-  /* border: 1px solid rgba(255, 255, 255, 0.06); */
   transition: transform 0.5s ease;
   z-index: inherit;
 }
@@ -191,7 +188,6 @@
 .info p {
   text-align: center;
   font-size: 1.5em;
-  /* width: 70%; */
 }
 
 @media screen and (max-width: 768px) {
@@ -251,7 +247,7 @@
   }
 
   .serves .serv2 {
-    width: calc(50% - 20px); /* 2 items per row */
+    width: calc(50% - 20px);
   }
 
   .servlink {

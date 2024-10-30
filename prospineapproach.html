@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pro Spine</title>
+    <title>Why Pro Spine</title>
     <link rel="icon" href="image/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
-     <link rel="stylesheet" href="treatment.css">
-     <link rel="stylesheet" href="approach.css">
+    <link rel="stylesheet" href="treatment.css">
+    <link rel="stylesheet" href="approach.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
@@ -26,12 +26,12 @@
                 <div class="nav-links" id="navLinks">
                     <a href="prospineapproach.html" class="link active">Why Pro Spine</a>
                     <a href="treatment.html">Conditions We Treat</a>
-                    <a href="#">Our Team</a>
-                    <a href="#">Testimonials</a>
-                    <a href="#">Events</a>
-                    <a href="#">Career</a>
-                    <a href="#">About Us</a>
-                    <a href="#">Contact Us</a>
+                    <a href="team.html">Our Team</a>
+                    <a href="testimonials.html">Testimonials</a>
+                    <a href="events.html">Events</a>
+                    <a href="career.html">Career</a>
+                    <a href="aboutus.html">About Us</a>
+                    <a href="contact.html">Contact Us</a>
                 </div>
             </div>
         </nav>
@@ -41,9 +41,391 @@
             <!-- <button class="appointment-btn">Book Now!</button> -->
         </div>
     </header>
-<div class="box1">
+    <div class="box1">
+        <div class="inner-box">
+            <h1>Choose Pro Spine: Where Healing Meets Expertise.</h1>
+            <p>At Pro Spine, we combine advanced technology and personalized treatment plans to empower your recovery
+                journey. Our dedicated team is here to help you achieve a pain-free life through innovative,
+                non-invasive therapies tailored to your needs.</p>
+            <br />
+            <button class="btn" id="openModal" role="button">Book an Appointment</button>
+            <hr class="hr2 hr">
+        </div>
+    </div>
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <h2>Book an Appointment</h2>
+            <form id="appointmentForm">
 
-</div>
+                <div class="form-step" id="step1">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="mobile">Mobile:</label>
+                    <input type="tel" id="mobile" name="mobile" required>
+
+                    <label for="city">City:</label>
+                    <input type="text" id="city" name="city" required>
+
+                    <button type="button" id="continue1">Continue</button>
+                </div>
+
+
+                <div class="form-step" id="step2" style="display: none;">
+                    <label for="symptom">Your Current Health Condition:</label>
+                    <textarea id="symptom" name="symptom"
+                        placeholder="Tell us about your current health condition. Type none if you don't have any."
+                        required></textarea>
+
+                    <label for="gender">Gender:</label>
+                    <select id="gender" name="gender" required>
+                        <option value="" disabled selected>Select your gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" name="age" required>
+
+                    <button type="button" id="back1">Back</button>
+                    <button type="button" id="continue2">Continue</button>
+                </div>
+
+
+                <div class="form-step" id="step3" style="display: none;">
+                    <label for="date">Select Date:</label>
+                    <input type="date" id="date" name="date" required>
+
+                    <label for="time">Select Time:</label>
+                    <input type="time" id="time" name="time" required>
+
+                    <button type="button" id="back2">Back</button>
+                    <button type="button" id="continue3">Continue</button>
+                </div>
+
+                <div class="form-step" id="review" style="display: none;">
+                    <h3>Review Your Details</h3>
+                    <p><strong>Name:</strong> <span id="reviewName"></span></p>
+                    <p><strong>Email:</strong> <span id="reviewEmail"></span></p>
+                    <p><strong>Mobile:</strong> <span id="reviewMobile"></span></p>
+                    <p><strong>City:</strong> <span id="reviewCity"></span></p>
+                    <p><strong>Gender:</strong> <span id="reviewGender"></span></p>
+                    <p><strong>Age:</strong> <span id="reviewAge"></span></p>
+                    <p><strong>Current Health Condition:</strong> <span id="reviewSymptom"></span></p>
+                    <p><strong>Date:</strong> <span id="reviewDate"></span></p>
+                    <p><strong>Time:</strong> <span id="reviewTime"></span></p>
+
+                    <button type="button" id="back3">Back</button>
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <section id="technology" class="section">
+        <h2 class="section-heading">Advanced Technology and Techniques</h2>
+
+        <div class="wrapperr">
+            <div class="technology-item">
+                <h3 class="subheading">Non-Invasive Robotic Spinal Decompression Therapy</h3>
+                <p>
+                    Pro Spine is equipped with cutting-edge technology, including robotic spinal decompression,
+                    which can effectively relieve pressure on the spine and address chronic pain issues. This
+                    innovative approach often reduces the need for invasive surgeries.
+                </p>
+            </div>
+
+            <div class="technology-item">
+                <h3 class="subheading">State-of-the-Art Equipment</h3>
+                <div class="wrappeer">
+                    <p>
+                        We use high-precision diagnostic and therapeutic equipment, ensuring accurate diagnoses and
+                        efficient treatment plans tailored to each patient’s condition.
+                    </p>
+                    <img src="image/Robotic-Spinal-Dcompression.jpg" alt="Diagnostic Equipment"
+                        class="technology-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section">
+        <h2 class="section-heading">Comprehensive Range of Services</h2>
+
+        <div class="wrapperr">
+            <div class="technology-item">
+                <h3 class="subheading">Personalized Physiotherapy Programs</h3>
+                <p>
+                    From tailored exercises to hands-on techniques, our physiotherapy programs are customized to help
+                    patients recover quickly and regain strength.
+                </p>
+            </div>
+
+            <div class="technology-item">
+                <h3 class="subheading">Chronic Pain Management</h3>
+                <div class="wrappeer">
+                    <p>
+                        For patients dealing with ongoing pain, Pro Spine offers specialized pain management programs,
+                        including non-invasive interventional procedures and medication management, to provide lasting
+                        relief.
+                    </p>
+                    <img src="image/chronic-pain.jpeg" alt="Chronic Pain Management" class="technology-image">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="patient-centered-approach" class="section">
+        <h2 class="section-heading">Holistic Patient-Centered Approach</h2>
+
+        <div class="wrapperr">
+            <div class="technology-item">
+                <h3 class="subheading">Customized Treatment Plans</h3>
+                <p>
+                    At Pro Spine, we believe in personalizing each treatment plan based on a patient’s unique condition,
+                    lifestyle, and recovery goals, enhancing the chances of a successful outcome.
+                </p>
+            </div>
+
+            <div class="technology-item">
+                <h3 class="subheading">Focus on Preventive Care</h3>
+                <div class="wrappeer">
+                    <p>
+                        We educate patients on the importance of daily exercise routines, posture correction, and
+                        lifestyle modifications to prevent future issues, particularly relevant for office-based workers
+                        who are prone to musculoskeletal conditions.
+                    </p>
+                    <img src="image/Preventive-Care.jpeg" alt="Preventive Care" class="technology-image">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="qualified-specialists" class="section">
+        <h2 class="section-heading">Highly Qualified Specialists</h2>
+
+        <div class="wrapperr">
+            <div class="technology-item">
+                <h3 class="subheading">Experienced and Compassionate Team</h3>
+                <p>
+                    Our team comprises specialists with years of expertise in physiotherapy, pain management, and
+                    orthopedic care, all dedicated to helping patients through their recovery journey.
+                </p>
+            </div>
+
+            <div class="technology-item">
+                <h3 class="subheading">Certified Pelvic Floor Rehabilitation</h3>
+                <div class="wrappeer">
+                    <p>
+                        Our therapists include certified pelvic floor rehab specialists, skilled in treating pelvic
+                        floor disorders, which is crucial for patients with specific pelvic issues, especially women’s
+                        health concerns.
+                    </p>
+                    <img src="image/Pelvic-Floor-Rehabilitation.jpeg" alt="Pelvic Floor Rehabilitation"
+                        class="technology-image">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="patient-education" class="section">
+        <h2 class="section-heading">Focus on Patient Education and Empowerment</h2>
+
+        <div class="wrapperr">
+            <div class="technology-item">
+                <h3 class="subheading">Health Awareness Programs</h3>
+                <p>
+                    Pro Spine runs regular health awareness programs and seminars on topics like office syndrome and
+                    chronic pain management, empowering patients to take charge of their health.
+                </p>
+            </div>
+
+            <div class="technology-item">
+                <h3 class="subheading">Support and Follow-Up</h3>
+                <div class="wrappeer">
+                    <p>
+                        We provide thorough follow-up and ongoing support, ensuring that patients stay informed about
+                        their progress and receive any additional guidance needed during recovery.
+                    </p>
+                    <img src="image/Patient-Support.jpeg" alt="Patient Support" class="technology-image">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="accessible-care" class="section">
+        <h2 class="section-heading">Convenient and Accessible Care</h2>
+
+        <div class="wrapperr">
+            <div class="technology-item">
+                <h3 class="subheading">Affordable Treatment Options</h3>
+                <p>
+                    Our services are designed to be accessible, with special offerings like health campaigns, where we
+                    provide discounted treatment packages to make advanced care affordable for a larger population.
+                </p>
+            </div>
+
+            <div class="technology-item">
+                <h3 class="subheading">Teleconsultation Services</h3>
+                <div class="wrappeer">
+                    <p>
+                        For patients unable to visit in person, Pro Spine offers teleconsultations, extending expert
+                        advice and care beyond physical boundaries.
+                    </p>
+                    <img src="image/Teleconsultation.jpg" alt="Teleconsultation Services" class="technology-image">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="commitment-surgery" class="section">
+        <h2 class="section-heading">Commitment to Avoiding Unnecessary Surgery</h2>
+
+        <div class="wrapperr">
+            <div class="technology-item">
+                <h3 class="subheading">Conservative Treatment Philosophy</h3>
+                <p>
+                    Pro Spine prioritizes conservative care and non-surgical treatments. Through therapies like robotic
+                    spinal decompression and guided physiotherapy, we aim to reduce pain and restore function without
+                    the need for invasive procedures.
+                </p>
+            </div>
+
+            <div class="technology-item">
+                <h3 class="subheading">Long-Term Solutions</h3>
+                <div class="wrappeer">
+                    <p>
+                        Our approach focuses on identifying and addressing the root causes of pain and discomfort to
+                        help patients achieve long-lasting relief and improved quality of life.
+                    </p>
+                    <img src="image/Long-Term-Solutions.jpeg" alt="Long-Term Solutions" class="technology-image">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="benefits" class="section section2">
+        <h2 class="section-heading">Benefits of Choosing Pro Spine</h2>
+
+        <div class="wrapperr">
+            <div class="technology-item">
+                <h3 class="subheading">Holistic and Personalized Care</h3>
+                <p>
+                    At Pro Spine, we prioritize a holistic approach that focuses on the individual needs of each
+                    patient. Our personalized treatment plans are designed to address specific conditions and enhance
+                    overall well-being.
+                </p>
+            </div>
+
+            <div class="technology-item">
+                <h3 class="subheading">Expert Team of Specialists</h3>
+                <p>
+                    Our experienced and compassionate team of specialists is dedicated to providing you with the highest
+                    level of care. With diverse expertise, we work together to ensure a comprehensive treatment
+                    experience.
+                </p>
+            </div>
+
+            <div class="technology-item">
+                <h3 class="subheading">Innovative Treatment Techniques</h3>
+                <p>
+                    We utilize the latest advancements in technology and treatment methods to deliver effective results.
+                    Our non-invasive techniques often lead to faster recovery times and improved outcomes.
+                </p>
+            </div>
+
+            <div class="technology-item">
+                <h3 class="subheading">Commitment to Patient Education</h3>
+                <p>
+                    We believe that informed patients are empowered patients. Pro Spine is committed to educating our
+                    patients about their conditions, treatment options, and preventive care strategies to foster
+                    long-term health.
+                </p>
+            </div>
+
+            <div class="technology-item">
+                <h3 class="subheading">Convenience and Accessibility</h3>
+                <p>
+                    Our services are designed to be accessible for everyone. With flexible appointment options,
+                    teleconsultation services, and affordable treatment packages, we strive to make high-quality care
+                    available to all.
+                </p>
+            </div>
+
+            <div class="technology-item">
+                <h3 class="subheading">Patient-Centered Focus</h3>
+                <p>
+                    At Pro Spine, we listen to our patients and involve them in the decision-making process. Your
+                    preferences, concerns, and goals are integral to creating an effective treatment plan that works for
+                    you.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-quote">
+                <h2>"Let challenges shape you, not stop you."</h2>
+                <img src="image/logo.png" alt="Logo" class="logo">
+            </div>
+            <hr class="hr">
+            <div class="footer-sections">
+                <div class="about-section footer-section">
+                    <h3>About us</h3>
+                    <ul>
+                        <li><a href="#">Vision</a></li>
+                        <li><a href="#">People</a></li>
+                        <li><a href="#">Partners</a></li>
+                        <li><a href="#">Awards & Affiliations</a></li>
+                        <li><a href="testimonials.html">Testimonials</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><a href="#">Locations</a></li>
+                        <li><a href="#">Contacts</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Conditions We Treat</h3>
+                    <ul>
+                        <li><a href="#">Herniated Disc</a></li>
+                        <li><a href="#">Spondylolisthesis</a></li>
+                        <li><a href="#">Degenerative Disc</a></li>
+                        <li><a href="#">Brachial Neuralgia</a></li>
+                        <li><a href="#">Disc Prolapse</a></li>
+                        <li><a href="#">Retrolisthesis</a></li>
+                        <li><a href="#">Scoliosis</a></li>
+                        <li><a href="#">Facet Joint Syndrome</a></li>
+                        <li><a href="#">Thecal Compression</a></li>
+                        <li><a href="treatment.html">See All >></a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="prospineapproach.html">Why Pro Spine</a></li>
+                        <li><a href="#">Portfolio</a></li>
+                        <li><a href="#">Events</a></li>
+                        <li><a href="#">Carrier</a></li>
+                        <li><a href="#">Manipal Physiotherapy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright © 2025, ProSpine. All rights reserved.</p>
+            <ul class="footer-links">
+                <li><a href="#">Terms & conditions</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
+            <div class="social-icons">
+                <a href="#"><img src="image/facebook-icon.png" alt="Facebook"></a>
+                <a href="#"><img src="image/twitter-icon.png" alt="Twitter"></a>
+                <a href="#"><img src="image/icons8-instagram-48.png" alt="Instagram"></a>
+            </div>
+        </div>
+    </footer>
     <script src="script.js"></script>
 </body>
 
