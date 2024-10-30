@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Physiotherapy Website</title>
+  <title>Pro Spine</title>
+  <link rel="icon" href="image/favicon.png" type="image/x-icon">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
@@ -12,7 +13,7 @@
 <body>
   <header>
     <div class="logo-container">
-      <img src="logo.png" alt="Pro Physio Logo" class="logo" />
+      <img src="image/logo.png" alt="Pro Physio Logo" class="logo" />
     </div>
 
     <nav>
@@ -21,8 +22,8 @@
           &#9776; <!-- Hamburger icon -->
         </div>
         <div class="nav-links" id="navLinks">
-          <a href="#">Why Pro Spine</a>
-          <a href="#">Conditions We Treat</a>
+          <a href="prospineapproach.html">Why Pro Spine</a>
+          <a href="treatment.html">Conditions We Treat</a>
           <a href="#">Our Team</a>
           <a href="#">Testimonials</a>
           <a href="#">Events</a>
@@ -128,7 +129,6 @@
     </div>
   </div>
 
-
   <div class="box2">
     <div class="inner-box2">
       <div class="stat" id="stat">
@@ -161,54 +161,61 @@
       approach to healthcare, working collaboratively across different
       specialties to provide comprehensive care.
     </p>
-    <a href="info.html" class="link">Read More <img src="rarr.svg" alt="right-arrow" /></a>
+    <a href="prospineapproach.html" class="link">Read More <img src="rarr.svg" alt="right-arrow" /></a>
   </div>
 
   <div class="box4">
     <h2>Personalized Care, Just for You</h2>
     <p>Consult with our specialist for all your health needs. Benefit from expert guidance and compassionate care.</p>
-    <div class="slider">
-      <div class="slider-container">
-        <div class="slide active">
-          <h3>Non-Invasive Robotic Spinal Decompression Therapy</h3>
-          <img src="image/noninv.png" alt="Physiotherapy">
-          <p>Physiotherapy helps relieve pain, improve mobility, and accelerate recovery from injuries. At our clinic,
-            we offer personalized treatment plans, guided by experienced professionals who use advanced techniques and
-            equipment to optimize your healing journey. With our patient-centered approach, you can regain strength and
-            enjoy a more active, pain-free life.</p>
+    <div class="cont">
+      <div class="items">
+        <div class="item1 non">
+          <div class="wrapper">
+            <img src="image/noninv.png" alt="Non-Invasive Robotic Spinal Decompression Therapy">
+            <h2>Non-Invasive Robotic Spinal Decompression Therapy</h2>
+          </div>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab dolorem mollitia quibusdam reiciendis a,
+            dolores consequuntur iure ipsum ullam necessitatibus!</p>
+          <a href="#" class="link">Read More</a>
+        </div>
+        <div class="item1">
+          <div class="wrapper">
+            <img src="image/ortho.png" alt="OrthoPedic Decompression Therapy">
+            <h2>OrthoPedic Decompression Therapy</h2>
+          </div>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab dolorem mollitia quibusdam reiciendis a,
+            dolores consequuntur iure ipsum ullam necessitatibus!</p>
+          <a href="#" class="link">Read More</a>
 
-          <a href="physio.html" class="link">Read More <img src="rarr.svg" alt="right-arrow" class="rarrow" /></a>
         </div>
-        <div class="slide">
-          <h3>Orthopedic Manipulation Therapy</h3>
-          <img src="image/ortho.png" alt="ortho">
-          <p>This is the content of card 2.</p>
+        <div class="item1">
+          <div class="wrapper">
+            <img src="image/phy1.jpeg" alt="Personalized Exercise Program">
+            <h2>Personalized Exercise Program</h2>
+          </div>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab dolorem mollitia quibusdam reiciendis a,
+            dolores consequuntur iure ipsum ullam necessitatibus!</p>
+          <a href="#" class="link">Read More</a>
+
         </div>
-        <div class="slide">
-          <h3>Personalized Exercise Program</h3>
-          <img src="image/phy1.jpeg" alt="">
-          <p>This is the content of card 3.</p>
-        </div>
-        <div class="slide">
-          <h3>Electro Therapy</h3>
-          <img src="image/electro.webp" alt="">
-          <p>This is the content of card 4.</p>
-        </div>
-        <div class="slide">
-          <h3>Electrodiagnosis</h3>
-          <img src="image/electrodiagnostic-icon.png" alt="">
-          <p>This is the content of card 4.</p>
+        <div class="item1">
+          <div class="wrapper">
+            <img src="image/electro.webp" alt="Electro Therapy">
+            <h2>Electro Therapy</h2>
+          </div>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab dolorem mollitia quibusdam reiciendis a,
+            dolores consequuntur iure ipsum ullam necessitatibus!</p>
+          <a href="#" class="link">Read More</a>
+
         </div>
       </div>
-      <div class="arrows">
-        <button class="arrow left" id="prev">&#10094;</button>
-        <button class="arrow right" id="next">&#10095;</button>
-      </div>
-      <div class="dots"></div>
     </div>
     <br>
     <h3 class="servh">Conditions We Treat</h3>
     <div class="serv">
+      <div class="serv1">
+        <a href="#">Electrodiognosis</a>
+      </div>
       <div class="serv1">
         <a href="#">Herniated Disc</a>
       </div>
@@ -231,6 +238,9 @@
         <a href="#">Scoliosis</a>
       </div>
       <div class="serv1">
+        <a href="#">Sciatica</a>
+      </div>
+      <div class="serv1">
         <a href="#">Radiculopathy</a>
       </div>
       <div class="serv1">
@@ -239,8 +249,14 @@
       <div class="serv1">
         <a href="#">Facet Joint Syndrome</a>
       </div>
+      <div class="serv1">
+        <a href="#">Spinal Canal Stenosis</a>
+      </div>
+      <div class="serv1">
+        <a href="#">Stiff Neck & Back Pain</a>
+      </div>
     </div>
-    <a href="services.html" class="link servlink">See All Services <img src="rarr.svg" alt="right-arrow"
+    <a href="treatment.html" class="link servlink">See All <img src="rarr.svg" alt="right-arrow"
         class="rarrow"></a>
   </div>
   <div class="box5">
@@ -277,39 +293,35 @@
 
       <div class="work-steps">
         <div class="work-step">
-          <img src="whyMake1.png" alt="Appointment">
+          <img src="image/whyMake1.png" alt="Appointment">
           <h3 class="step-title">Make an Appointment</h3>
           <p class="step-text">Easily schedule an appointment with our team at your convenience. Just give us a call or
             book online to reserve your spot.</p>
           <br>
-          <button type="submit" class="btn">Book Now</button>
         </div>
 
         <div class="work-step">
-          <img src="whyConsultation2.png" alt="">
+          <img src="image/whyConsultation2.png" alt="">
           <h3 class="step-title">Online Consultation</h3>
           <p class="step-text">Connect with our therapists from anywhere. Our online consultation service provides
             convenient access to our care.</p>
           <br>
-          <button type="submit" class="btn">Book an Online Meeting</button>
         </div>
 
         <div class="work-step">
-          <img src="ask_query.png" alt="">
+          <img src="image/ask_query.png" alt="">
           <h3 class="step-title">Ask a Query</h3>
           <p class="step-text">Got questions? We’re here to help! Reach out with any questions or concerns, and we’ll
             guide you every step of the way.</p>
           <br>
-          <button type="submit" class="btn">Send Message</button>
         </div>
 
         <div class="work-step">
-          <img src="whyChiropractic4.png" alt="">
+          <img src="image/whyChiropractic4.png" alt="">
           <h3 class="step-title">Satisfied Reviews</h3>
           <p class="step-text">Join the community of satisfied patients who trust us with their healthcare. See our
             reviews to understand the care we provide.</p>
           <br>
-          <button type="submit" class="btn">View Patients Reviews</button>
         </div>
       </div>
     </div>
@@ -396,6 +408,7 @@
 
       <!-- Add more reviews as needed -->
     </div>
+    <button type="submit" class="btn"><a href="testimonials.html">View Patients Testimonials</a></button>
   </div>
 
 
@@ -415,7 +428,7 @@
     <div class="footer-content">
       <div class="footer-quote">
         <h2>"Let challenges shape you, not stop you."</h2>
-        <img src="logo.png" alt="Logo" class="logo">
+        <img src="image/logo.png" alt="Logo" class="logo">
       </div>
       <hr class="hr">
       <div class="footer-sections">
@@ -426,7 +439,7 @@
             <li><a href="#">People</a></li>
             <li><a href="#">Partners</a></li>
             <li><a href="#">Awards & Affiliations</a></li>
-            <li><a href="#">Testimonials</a></li>
+            <li><a href="testimonials.html">Testimonials</a></li>
           </ul>
         </div>
         <div class="footer-section">
@@ -448,13 +461,13 @@
             <li><a href="#">Scoliosis</a></li>
             <li><a href="#">Facet Joint Syndrome</a></li>
             <li><a href="#">Thecal Compression</a></li>
-            <li><a href="services.html">See All Services >></a></li>
+            <li><a href="treatment.html">See All >></a></li>
           </ul>
         </div>
         <div class="footer-section">
           <h3>Quick Links</h3>
           <ul>
-            <li><a href="#">Why Pro Spine</a></li>
+            <li><a href="prospineapproach.html">Why Pro Spine</a></li>
             <li><a href="#">Portfolio</a></li>
             <li><a href="#">Events</a></li>
             <li><a href="#">Carrier</a></li>
@@ -480,27 +493,6 @@
   <script src="script.js"></script>
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const hamburger = document.getElementById("hamburger");
-      const navLinks = document.getElementById("navLinks");
-
-      // Toggle the menu on hamburger click
-      hamburger.addEventListener("click", () => {
-        navLinks.classList.toggle("active");
-        hamburger.classList.toggle("active"); // Rotate the hamburger icon to 'X'
-      });
-
-      // Close the menu when clicking outside
-      document.addEventListener("click", (event) => {
-        const isClickInside = hamburger.contains(event.target) || navLinks.contains(event.target);
-        if (!isClickInside) {
-          navLinks.classList.remove("active");
-          hamburger.classList.remove("active");
-        }
-      });
-    });
-
-    
   </script>
 </body>
 

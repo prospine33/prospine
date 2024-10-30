@@ -108,6 +108,10 @@ a:hover {
   background-size: 0 3px, 100% 3px;
 }
 
+.link.active {
+  background-size: 0 3px, 100% 3px; /* Active link shows all colors */
+}
+
 .header-right {
   display: flex;
   flex-direction: column;
@@ -170,6 +174,7 @@ a:hover {
   font-size: 80px;
   font-weight: bold;
   margin-bottom: 20px;
+  color: #000;
 }
 
 .inner-box h2 {
@@ -378,97 +383,50 @@ a:hover {
   width: 20px;
 }
 
-.slider {
-  position: relative;
-  width: 100%;
-  margin: auto;
-  overflow: hidden;
-  border-radius: 20px;
-}
-
-.slider-container {
+.cont {
   display: flex;
-  transition: transform 0.5s ease;
-  width: 200%;
-  /* Modified to fit all slides horizontally */
+  flex-direction: column;
 }
 
-.slide {
-  flex: 30%;
-  min-width: 24.5%;
-  height: auto;
-  padding: 15px;
-  box-sizing: border-box;
-  margin: 20px 10px;
-  background: #fff;
-  border-radius: 20px;
-  text-align: center;
+.items {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.slide img {
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-  margin-top: 20px;
+.item1 {
+  max-width: 23%;
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 10px;
+  background-color: #fff;
 }
 
-.slide a {
-  /* margin-bottom: 10px; */
-  font-size: 1.2em;
+.non {
+  background-color: #fbfbfb;
 }
 
-.slide .rarrow {
-  position: relative;
-  top: 3px;
-  width: 20px;
-  height: inherit;
-}
-
-.slide p {
-  margin-bottom: 10px;
-  text-align: center;
-}
-.arrows {
-  position: absolute;
-  top: 50%;
-  width: 100%;
+.wrapper {
   display: flex;
   justify-content: space-between;
-  transform: translateY(-50%);
+  height: 180px;
 }
 
-.arrow {
-  background-color: #ffffff;
-  color: #ccc;
-  border: 1px solid #ddd;
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 50px;
-  transition: color 0.9s ease, box-shadow 0.4s ease;
+.item1 h2 {
+  font-size: 1.5em;
+  padding: 5px;
+  margin: 15px;
 }
 
-.arrow:hover {
-  color: #005bb5;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+.item1 p {
+  font-size: 1em;
+  padding: 5px;
+  margin: 15px;
 }
 
-.dots {
-  text-align: center;
-  margin-top: 10px;
-}
-
-.dot {
-  display: inline-block;
-  width: 15px;
-  height: 15px;
-  border-radius: 50% 30%;
-  background: rgb(255, 255, 255);
-  margin: 0 5px;
-  cursor: pointer;
-}
-
-.dot.active {
-  background: rgb(255, 153, 0);
+.item1 img {
+  width: 150px;
+  height: auto;
 }
 
 body .box5 {
@@ -638,6 +596,11 @@ body .box5 {
 .btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+.btn a {
+  text-decoration: none;
+  color: #000;
 }
 
 .session-container {
@@ -1282,45 +1245,7 @@ textarea {
 
   .box4 p {
     font-size: 1em;
-    margin-bottom: 5px;
-  }
-  .slide {
-    flex: 0 0 100%; /* Show one slide at a time on small screens */
-  }
-
-  .slide {
-    flex: 50%;
-    min-width: 48%;
-    height: auto;
-    padding: 20px;
-  }
-  .slide p {
-    font-size: 0.7em;
-  }
-
-  .slide a {
-    font-size: 0.8em;
-  }
-
-  .slide .rarrow {
-    position: relative;
-    top: 11px;
-    width: 15px;
-    height: inherit;
-  }
-
-  .slide h3 {
-    font-size: 1em;
-  }
-  .slide img {
-    width: 150px;
-    height: 150px;
-    margin-bottom: 10px;
-  }
-
-  .dot {
-    width: 10px;
-    height: 10px;
+    margin-bottom: 15px;
   }
 
   .serv {
@@ -1536,5 +1461,40 @@ textarea {
   textarea {
     padding: 2px;
     font-size: 14px; /* Smaller text inputs */
+  }
+
+  .item1 {
+    max-width: 96%;
+    padding: 10px;
+    margin: 5px;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .item1 h2 {
+    font-size: 0.9em;
+  }
+
+  .item1 img {
+    width: 100px;
+  }
+
+  .item1 p {
+    padding: 0px;
+    margin: 5px;
+    font-size: 0.7em;
+  }
+
+  .item1 a {
+    font-size: 0.7em;
   }
 }

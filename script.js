@@ -1,3 +1,23 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const hamburger = document.getElementById("hamburger");
+  const navLinks = document.getElementById("navLinks");
+
+  // Toggle the menu on hamburger click
+  hamburger.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+    hamburger.classList.toggle("active"); // Rotate the hamburger icon to 'X'
+  });
+
+  // Close the menu when clicking outside
+  document.addEventListener("click", (event) => {
+    const isClickInside = hamburger.contains(event.target) || navLinks.contains(event.target);
+    if (!isClickInside) {
+      navLinks.classList.remove("active");
+      hamburger.classList.remove("active");
+    }
+  });
+});
+
 document.addEventListener("DOMContentLoaded", function () {
   // Counting Animation
   const target = 25000; // Target number
@@ -34,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   observer.observe(statElement); // Observe the stat element
 
-  
+
   // Video Slider
   const videoSlider = (function () {
     let currentVideoIndex = 0; // Renamed variable to avoid conflicts
@@ -119,132 +139,132 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    const modal = document.getElementById("modal");
-    const openModalButton = document.getElementById("openModal");
-    const closeModalButton = document.getElementById("closeModal");
+  const modal = document.getElementById("modal");
+  const openModalButton = document.getElementById("openModal");
+  const closeModalButton = document.getElementById("closeModal");
 
-    const step1 = document.getElementById("step1");
-    const step2 = document.getElementById("step2");
-    const step3 = document.getElementById("step3");
-    const review = document.getElementById("review");
+  const step1 = document.getElementById("step1");
+  const step2 = document.getElementById("step2");
+  const step3 = document.getElementById("step3");
+  const review = document.getElementById("review");
 
-    const continue1 = document.getElementById("continue1");
-    const back1 = document.getElementById("back1");
-    const continue2 = document.getElementById("continue2");
-    const back2 = document.getElementById("back2");
-    const continue3 = document.getElementById("continue3");
-    const back3 = document.getElementById("back3");
+  const continue1 = document.getElementById("continue1");
+  const back1 = document.getElementById("back1");
+  const continue2 = document.getElementById("continue2");
+  const back2 = document.getElementById("back2");
+  const continue3 = document.getElementById("continue3");
+  const back3 = document.getElementById("back3");
 
-    // Form data object
-    const formData = {};
+  // Form data object
+  const formData = {};
 
-    // Open the modal
-    openModalButton.addEventListener("click", () => {
-        modal.style.display = "block";
-    });
+  // Open the modal
+  openModalButton.addEventListener("click", () => {
+    modal.style.display = "block";
+  });
 
-    // Close the modal
-    closeModalButton.addEventListener("click", () => {
-        modal.style.display = "none";
-    });
+  // Close the modal
+  closeModalButton.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
 
-    // Function to validate email
-    function validateEmail(email) {
-        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return regex.test(email);
+  // Function to validate email
+  function validateEmail(email) {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  }
+
+  // Step 1: Continue button with validation
+  continue1.addEventListener("click", () => {
+    // Collect data from step 1
+    formData.name = document.getElementById("name").value;
+    formData.email = document.getElementById("email").value;
+    formData.mobile = document.getElementById("mobile").value;
+    formData.city = document.getElementById("city").value;
+
+    // Validation: Check if all fields are filled and email is valid
+    if (!formData.name || !formData.email || !formData.mobile || !formData.city) {
+      alert("Please fill in all fields.");
+    } else if (!validateEmail(formData.email)) {
+      alert("Please enter a valid email address.");
+    } else {
+      // Switch to step 2
+      step1.style.display = "none";
+      step2.style.display = "block";
     }
+  });
 
-    // Step 1: Continue button with validation
-    continue1.addEventListener("click", () => {
-        // Collect data from step 1
-        formData.name = document.getElementById("name").value;
-        formData.email = document.getElementById("email").value;
-        formData.mobile = document.getElementById("mobile").value;
-        formData.city = document.getElementById("city").value;
+  // Step 2: Back and Continue buttons with validation
+  back1.addEventListener("click", () => {
+    step2.style.display = "none";
+    step1.style.display = "block";
+  });
 
-        // Validation: Check if all fields are filled and email is valid
-        if (!formData.name || !formData.email || !formData.mobile || !formData.city) {
-            alert("Please fill in all fields.");
-        } else if (!validateEmail(formData.email)) {
-            alert("Please enter a valid email address.");
-        } else {
-            // Switch to step 2
-            step1.style.display = "none";
-            step2.style.display = "block";
-        }
-    });
+  continue2.addEventListener("click", () => {
+    // Collect data from step 2
+    formData.gender = document.getElementById("gender").value;
+    formData.age = document.getElementById("age").value;
+    formData.symptom = document.getElementById("symptom").value;
 
-    // Step 2: Back and Continue buttons with validation
-    back1.addEventListener("click", () => {
-        step2.style.display = "none";
-        step1.style.display = "block";
-    });
+    // Validation: Check if all fields are filled
+    if (!formData.gender || !formData.age || !formData.symptom) {
+      alert("Please fill in all fields.");
+    } else {
+      // Switch to step 3
+      step2.style.display = "none";
+      step3.style.display = "block";
+    }
+  });
 
-    continue2.addEventListener("click", () => {
-        // Collect data from step 2
-        formData.gender = document.getElementById("gender").value;
-        formData.age = document.getElementById("age").value;
-        formData.symptom = document.getElementById("symptom").value;
+  // Step 3: Back and Continue buttons with validation
+  back2.addEventListener("click", () => {
+    step3.style.display = "none";
+    step2.style.display = "block";
+  });
 
-        // Validation: Check if all fields are filled
-        if (!formData.gender || !formData.age || !formData.symptom) {
-            alert("Please fill in all fields.");
-        } else {
-            // Switch to step 3
-            step2.style.display = "none";
-            step3.style.display = "block";
-        }
-    });
+  continue3.addEventListener("click", () => {
+    // Collect data from step 3
+    formData.date = document.getElementById("date").value;
+    formData.time = document.getElementById("time").value;
 
-    // Step 3: Back and Continue buttons with validation
-    back2.addEventListener("click", () => {
-        step3.style.display = "none";
-        step2.style.display = "block";
-    });
+    // Validation: Check if date and time are selected
+    if (!formData.date || !formData.time) {
+      alert("Please select both date and time.");
+    } else {
+      // Switch to review step
+      step3.style.display = "none";
+      review.style.display = "block";
 
-    continue3.addEventListener("click", () => {
-        // Collect data from step 3
-        formData.date = document.getElementById("date").value;
-        formData.time = document.getElementById("time").value;
+      // Populate review section
+      document.getElementById("reviewName").textContent = formData.name;
+      document.getElementById("reviewEmail").textContent = formData.email;
+      document.getElementById("reviewMobile").textContent = formData.mobile;
+      document.getElementById("reviewCity").textContent = formData.city;
+      document.getElementById("reviewGender").textContent = formData.gender;
+      document.getElementById("reviewAge").textContent = formData.age;
+      document.getElementById("reviewSymptom").textContent = formData.symptom;
+      document.getElementById("reviewDate").textContent = formData.date;
+      document.getElementById("reviewTime").textContent = formData.time;
+    }
+  });
 
-        // Validation: Check if date and time are selected
-        if (!formData.date || !formData.time) {
-            alert("Please select both date and time.");
-        } else {
-            // Switch to review step
-            step3.style.display = "none";
-            review.style.display = "block";
+  // Review Step: Back and Submit buttons
+  back3.addEventListener("click", () => {
+    review.style.display = "none";
+    step3.style.display = "block";
+  });
 
-            // Populate review section
-            document.getElementById("reviewName").textContent = formData.name;
-            document.getElementById("reviewEmail").textContent = formData.email;
-            document.getElementById("reviewMobile").textContent = formData.mobile;
-            document.getElementById("reviewCity").textContent = formData.city;
-            document.getElementById("reviewGender").textContent = formData.gender;
-            document.getElementById("reviewAge").textContent = formData.age;
-            document.getElementById("reviewSymptom").textContent = formData.symptom;
-            document.getElementById("reviewDate").textContent = formData.date;
-            document.getElementById("reviewTime").textContent = formData.time;
-        }
-    });
-
-    // Review Step: Back and Submit buttons
-    back3.addEventListener("click", () => {
-        review.style.display = "none";
-        step3.style.display = "block";
-    });
-
-    // Handle form submission
-    document.getElementById("appointmentForm").addEventListener("submit", (event) => {
-        event.preventDefault(); // Prevent default form submission
-        alert("Appointment booked successfully!");
-        modal.style.display = "none"; // Close the modal
-        // Optionally, you can reset the formData here if needed
-        Object.keys(formData).forEach(key => delete formData[key]);
-        document.getElementById("appointmentForm").reset(); // Reset the form fields
-        step1.style.display = "block"; // Reset to step 1
-        step2.style.display = "none";
-        step3.style.display = "none";
-        review.style.display = "none";
-    });
+  // Handle form submission
+  document.getElementById("appointmentForm").addEventListener("submit", (event) => {
+    event.preventDefault(); // Prevent default form submission
+    alert("Appointment booked successfully!");
+    modal.style.display = "none"; // Close the modal
+    // Optionally, you can reset the formData here if needed
+    Object.keys(formData).forEach(key => delete formData[key]);
+    document.getElementById("appointmentForm").reset(); // Reset the form fields
+    step1.style.display = "block"; // Reset to step 1
+    step2.style.display = "none";
+    step3.style.display = "none";
+    review.style.display = "none";
+  });
 });
