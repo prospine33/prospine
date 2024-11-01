@@ -46,7 +46,9 @@
             <h1>
                 Step in and discover a new path to wellness.
             </h1>
-            <p>Personalized, science-backed healthcare with dedicated experts by your side. Our compassionate team crafts individualized treatment plans, empowering you on your journey to optimal recovery and well-being.</p>
+            <p>Personalized, science-backed healthcare with dedicated experts by your side. Our compassionate team
+                crafts individualized treatment plans, empowering you on your journey to optimal recovery and
+                well-being.</p>
             <br />
             <button class="btn" id="openModal" role="button">Book an Appointment</button>
             <hr class="hr2 hr">
@@ -76,7 +78,7 @@
 
 
                 <div class="form-step" id="step2" style="display: none;">
-                    <label for="symptom">Your Current Health Condition:</label>
+                    <label for="symptom">Reason for Consultation:</label>
                     <textarea id="symptom" name="symptom"
                         placeholder="Tell us about your current health condition. Type none if you don't have any."
                         required></textarea>
@@ -88,6 +90,9 @@
                         <option value="female">Female</option>
                         <option value="other">Other</option>
                     </select>
+
+                    <label for="occupation">Occupation</label>
+                    <input type="text" id="occupation" name="occupation" required>
 
                     <label for="age">Age:</label>
                     <input type="number" id="age" name="age" required>
@@ -101,41 +106,48 @@
                     <label for="date">Select Date:</label>
                     <input type="date" id="date" name="date" required>
 
-                    <label for="time">Select Time:</label>
-                    <input type="time" id="time" name="time" required>
+                    <label for="consultation-type">Consultation Type:</label>
+                    <select id="consultation" name="consultationtype" required>
+                        <option value="" disabled selected>Select Consultation Type</option>
+                        <option value="online">Online</option>
+                        <option value="appointment">Appointment</option>
+                        <option value="in-person">Home Visit</option>
+                    </select>
 
                     <button type="button" id="back2">Back</button>
                     <button type="button" id="continue3">Continue</button>
                 </div>
 
                 <div class="form-step" id="review" style="display: none;">
-                    <h3>Review Your Details</h3>
+                    <h3 class="reviewh3">Review Your Details</h3>
                     <p><strong>Name:</strong> <span id="reviewName"></span></p>
                     <p><strong>Email:</strong> <span id="reviewEmail"></span></p>
                     <p><strong>Mobile:</strong> <span id="reviewMobile"></span></p>
                     <p><strong>City:</strong> <span id="reviewCity"></span></p>
                     <p><strong>Gender:</strong> <span id="reviewGender"></span></p>
+                    <p><strong>Occupation:</strong> <span id="reviewOccupation"></span></p>
                     <p><strong>Age:</strong> <span id="reviewAge"></span></p>
                     <p><strong>Current Health Condition:</strong> <span id="reviewSymptom"></span></p>
                     <p><strong>Date:</strong> <span id="reviewDate"></span></p>
-                    <p><strong>Time:</strong> <span id="reviewTime"></span></p>
+                    <p><strong>Consultation Type:</strong> <span id="reviewConsultation"></span></p>
 
+                    <div class="checkbox-container">
+                        <input type="checkbox" name="checkbox" id="checkbox" required>
+                        <label for="checkbox">I agree to the terms and conditions.</label>
+                    </div>
+                    <hr>
+                    <p>After submitting, our staff will contact you soon to confirm your appointment.</p>
                     <button type="button" id="back3">Back</button>
                     <button type="submit">Submit</button>
                 </div>
-            </form>
         </div>
+        </form>
     </div>
 
     <h2 class="condh2">Conditions We Treat</h2>
     <div class="slider-container">
         <button class="nav-button" id="prevBtn">&#10094;</button>
         <div class="slider" id="slider">
-            <a href="#" class="slider-link">Electro Therapy</a>
-            <a href="#" class="slider-link">Non-Invasive Robotic Spinal Decompression Therapy</a>
-            <a href="#" class="slider-link">OrthoPedic Decompression Therapy</a>
-            <a href="#" class="slider-link">Personalized Exercise Program</a>
-            <a href="#" class="slider-link">Electrodiagnosis</a>
             <a href="#" class="slider-link">Herniated Disc</a>
             <a href="#" class="slider-link">Spondylolisthesis</a>
             <a href="#" class="slider-link">Degenerative Disc</a>
@@ -162,19 +174,13 @@
     </div>
     <div class="serves">
         <div class="serv2">
-            <a href="#">Electro Therapy >></a>
+            <a href="#">Herniated Disc</a>
         </div>
         <div class="serv2">
-            <a href="#">Electrodiognosis >></a>
+            <a href="#">Spondylolisthesis</a>
         </div>
         <div class="serv2">
-            <a href="#">Herniated Disc >></a>
-        </div>
-        <div class="serv2">
-            <a href="#">Spondylolisthesis >></a>
-        </div>
-        <div class="serv2">
-            <a href="#">Degenerative Disc >></a>
+            <a href="#">Degenerative Disc</a>
         </div>
         <div class="serv2">
             <a href="#">Brachial Neuralgia</a>
@@ -202,15 +208,6 @@
         </div>
         <div class="serv2">
             <a href="#">Spinal Canal Stenosis</a>
-        </div>
-        <div class="serv2">
-            <a href="#">Non-Invasive Robotic Spinal Decompression Therapy</a>
-        </div>
-        <div class="serv2">
-            <a href="#">OrthoPedic Decompression Therapy</a>
-        </div>
-        <div class="serv2">
-            <a href="#">Personalized Exercise Program</a>
         </div>
         <div class="serv2">
             <a href="#">Stiff Neck & Back Pain</a>

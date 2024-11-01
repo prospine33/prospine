@@ -4,139 +4,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Appointment Booking</title>
+  <title>Consultation Modal Example</title>
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      /* Updated font for a modern look */
-      background-color: #f4f4f4;
-      margin: 0;
-      padding: 0;
+      font-family: Arial, sans-serif;
     }
 
-    .btn {
-      padding: 10px 20px;
-      background-color: #007BFF;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-      transition: background-color 0.3s ease, transform 0.2s ease;
+    .container {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 50px;
     }
 
-    .btn:hover {
-      background-color: #0056b3;
-      transform: translateY(-2px);
-      /* Slight lift on hover */
+    .box {
+      border: 1px solid #ccc;
+      padding: 20px;
+      width: 200px;
+      text-align: center;
     }
 
     .modal {
       display: none;
-      /* Hidden by default */
       position: fixed;
-      /* Stay in place */
       z-index: 1;
-      /* Sit on top */
       left: 0;
       top: 0;
       width: 100%;
-      /* Full width */
       height: 100%;
-      /* Full height */
       overflow: auto;
-      /* Enable scroll if needed */
-      background-color: rgba(0, 0, 0, 0.7);
-      /* Dark overlay */
+      background-color: rgba(0, 0, 0, 0.4);
     }
 
     .modal-content {
-      background-color: #ffffff;
-      margin: 5% auto;
-      /* 5% from the top and centered */
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-      width: 90%;
-      /* Could be more or less, depending on screen size */
-      max-width: 600px;
-      /* Set a max width */
-    }
-
-    h2 {
-      margin: 0 0 20px 0;
-      font-size: 28px;
-      /* Increased font size */
-      color: #333;
-      text-align: center;
-      /* Centered heading */
-    }
-
-    label {
-      font-weight: bold;
-      margin-bottom: 5px;
-      display: block;
-      /* Make labels block elements */
-    }
-
-    input[type="text"],
-    input[type="email"],
-    input[type="tel"],
-    input[type="number"],
-    input[type="date"],
-    input[type="time"],
-    select,
-    textarea {
-      width: calc(100% - 20px);
-      /* Full width minus padding */
-      padding: 12px;
-      /* Increased padding */
-      margin-bottom: 15px;
-      /* Spacing between fields */
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      transition: border-color 0.3s ease;
-      font-size: 16px;
-      /* Increased font size for inputs */
-    }
-
-    input[type="text"]:focus,
-    input[type="email"]:focus,
-    input[type="tel"]:focus,
-    input[type="number"]:focus,
-    input[type="date"]:focus,
-    input[type="time"]:focus,
-    select:focus,
-    textarea:focus {
-      border-color: #007BFF;
-      /* Change border color on focus */
-      outline: none;
-      /* Remove default outline */
-    }
-
-    button[type="button"],
-    button[type="submit"] {
-      background-color: #007BFF;
-      /* Blue background */
-      color: white;
-      border: none;
-      border-radius: 5px;
-      padding: 10px 20px;
-      cursor: pointer;
-      font-size: 16px;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      margin: 5px;
-      /* Added margin for spacing between buttons */
-      width: calc(33% - 10px);
-      /* Equal width for buttons */
-    }
-
-    button[type="button"]:hover,
-    button[type="submit"]:hover {
-      background-color: #0056b3;
-      /* Darker blue on hover */
-      transform: translateY(-2px);
-      /* Slight lift on hover */
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
     }
 
     .close {
@@ -148,241 +52,78 @@
 
     .close:hover,
     .close:focus {
-      color: #333;
-      /* Change close button color on hover */
+      color: black;
       text-decoration: none;
       cursor: pointer;
-    }
-
-    textarea {
-      height: 100px;
-      /* Set a fixed height for the textarea */
-    }
-
-    /* Review Step Styling */
-    #review {
-      text-align: left;
-      /* Align text to the left for the review section */
-    }
-
-    #review p {
-      font-size: 16px;
-      margin: 5px 0;
-      /* Spacing between review details */
-    }
-
-    #review strong {
-      color: #007BFF;
-      /* Highlighting the strong text */
     }
   </style>
 </head>
 
 <body>
-  <button class="btn" id="openModal">Book an Appointment</button>
 
-  <!-- Modal -->
+  <div class="container">
+    <div class="box">
+      <h3>Online Consultation</h3>
+      <p>Get expert advice from the comfort of your home.</p>
+      <button onclick="openModal('online')">Book Now</button>
+    </div>
+    <div class="box">
+      <h3>Appointment Booking</h3>
+      <p>Schedule your visit with our specialists easily.</p>
+      <button onclick="openModal('appointment')">Book Appointment</button>
+    </div>
+    <div class="box">
+      <h3>Consultation at Home</h3>
+      <p>Request a visit from our healthcare professionals.</p>
+      <button onclick="openModal('home')">Request Visit</button>
+    </div>
+  </div>
+
+  <!-- The Modal -->
   <div class="modal" id="modal">
     <div class="modal-content">
       <span class="close" id="closeModal">&times;</span>
-      <h2>Book an Appointment</h2>
-      <form id="appointmentForm">
-        <!-- Step 1 -->
-        <div class="form-step" id="step1">
-          <label for="name">Name:</label>
-          <input type="text" id="name" name="name" required>
-
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required>
-
-          <label for="mobile">Mobile:</label>
-          <input type="tel" id="mobile" name="mobile" required>
-
-          <label for="city">City:</label>
-          <input type="text" id="city" name="city" required>
-
-          <button type="button" id="continue1">Continue</button>
-        </div>
-
-        <!-- Step 2 -->
-        <div class="form-step" id="step2" style="display: none;">
-          <label for="symptom">Your Current Health Condition:</label>
-          <textarea id="symptom" name="symptom"
-            placeholder="Tell us about your current health condition. Type none if you don't have any."
-            required></textarea>
-
-          <label for="gender">Gender:</label>
-          <select id="gender" name="gender" required>
-            <option value="" disabled selected>Select your gender</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Other</option>
-          </select>
-
-          <label for="age">Age:</label>
-          <input type="number" id="age" name="age" required>
-
-          <button type="button" id="back1">Back</button>
-          <button type="button" id="continue2">Continue</button>
-        </div>
-
-        <!-- Step 3 -->
-        <div class="form-step" id="step3" style="display: none;">
-          <label for="date">Select Date:</label>
-          <input type="date" id="date" name="date" required>
-
-          <label for="time">Select Time:</label>
-          <input type="time" id="time" name="time" required>
-
-          <button type="button" id="back2">Back</button>
-          <button type="button" id="continue3">Continue</button>
-        </div>
-
-        <!-- Review Step -->
-        <div class="form-step" id="review" style="display: none;">
-          <h3>Review Your Details</h3>
-          <p><strong>Name:</strong> <span id="reviewName"></span></p>
-          <p><strong>Email:</strong> <span id="reviewEmail"></span></p>
-          <p><strong>Mobile:</strong> <span id="reviewMobile"></span></p>
-          <p><strong>City:</strong> <span id="reviewCity"></span></p>
-          <p><strong>Gender:</strong> <span id="reviewGender"></span></p>
-          <p><strong>Age:</strong> <span id="reviewAge"></span></p>
-          <p><strong>Current Health Condition:</strong> <span id="reviewSymptom"></span></p>
-          <p><strong>Date:</strong> <span id="reviewDate"></span></p>
-          <p><strong>Time:</strong> <span id="reviewTime"></span></p>
-
-          <button type="button" id="back3">Back</button>
-          <button type="submit">Submit</button>
-        </div>
-      </form>
+      <h2 id="modalTitle">Book an Appointment</h2>
+      <p id="modalMessage">Please select your consultation option.</p>
     </div>
   </div>
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const modal = document.getElementById("modal");
-      const openModalButton = document.getElementById("openModal");
-      const closeModalButton = document.getElementById("closeModal");
+    const modal = document.getElementById("modal");
+    const closeModalButton = document.getElementById("closeModal");
 
-      const step1 = document.getElementById("step1");
-      const step2 = document.getElementById("step2");
-      const step3 = document.getElementById("step3");
-      const review = document.getElementById("review");
+    function openModal(consultationType) {
+      modal.style.display = "block";
 
-      const continue1 = document.getElementById("continue1");
-      const back1 = document.getElementById("back1");
-      const continue2 = document.getElementById("continue2");
-      const back2 = document.getElementById("back2");
-      const continue3 = document.getElementById("continue3");
-      const back3 = document.getElementById("back3");
+      const title = document.getElementById("modalTitle");
+      const message = document.getElementById("modalMessage");
 
-      // Form data object
-      const formData = {};
+      // Set title and message based on consultation type
+      if (consultationType === 'online') {
+        title.textContent = "Book an Online Consultation";
+        message.textContent = "Connect with qualified professionals through video calls, ensuring personalized care without needing to travel.";
+      } else if (consultationType === 'appointment') {
+        title.textContent = "Book an Appointment";
+        message.textContent = "Schedule your visit with our specialists easily. Choose the date and time that suits you best.";
+      } else if (consultationType === 'home') {
+        title.textContent = "Request a Home Consultation";
+        message.textContent = "Our healthcare professionals will visit you at home to provide high-quality care tailored to your needs.";
+      }
+    }
 
-      // Open the modal
-      openModalButton.addEventListener("click", () => {
-        modal.style.display = "block";
-      });
-
-      // Close the modal
-      closeModalButton.addEventListener("click", () => {
-        modal.style.display = "none";
-      });
-
-      // Step 1: Continue button with validation
-      continue1.addEventListener("click", () => {
-        // Collect data from step 1
-        formData.name = document.getElementById("name").value;
-        formData.email = document.getElementById("email").value;
-        formData.mobile = document.getElementById("mobile").value;
-        formData.city = document.getElementById("city").value;
-
-        // Validation: Check if all fields are filled
-        if (formData.name && formData.email && formData.mobile && formData.city) {
-          // Switch to step 2
-          step1.style.display = "none";
-          step2.style.display = "block";
-        } else {
-          alert("Please fill in all fields.");
-        }
-      });
-
-      // Step 2: Back and Continue buttons with validation
-      back1.addEventListener("click", () => {
-        step2.style.display = "none";
-        step1.style.display = "block";
-      });
-
-      continue2.addEventListener("click", () => {
-        // Collect data from step 2
-        formData.gender = document.getElementById("gender").value;
-        formData.age = document.getElementById("age").value;
-        formData.symptom = document.getElementById("symptom").value;
-
-        // Validation: Check if all fields are filled
-        if (formData.gender && formData.age && formData.symptom) {
-          // Switch to step 3
-          step2.style.display = "none";
-          step3.style.display = "block";
-        } else {
-          alert("Please fill in all fields.");
-        }
-      });
-
-      // Step 3: Back and Continue buttons with validation
-      back2.addEventListener("click", () => {
-        step3.style.display = "none";
-        step2.style.display = "block";
-      });
-
-      continue3.addEventListener("click", () => {
-        // Collect data from step 3
-        formData.date = document.getElementById("date").value;
-        formData.time = document.getElementById("time").value;
-
-        // Validation: Check if date and time are selected
-        if (formData.date && formData.time) {
-          // Switch to review step
-          step3.style.display = "none";
-          review.style.display = "block";
-
-          // Populate review section
-          document.getElementById("reviewName").textContent = formData.name;
-          document.getElementById("reviewEmail").textContent = formData.email;
-          document.getElementById("reviewMobile").textContent = formData.mobile;
-          document.getElementById("reviewCity").textContent = formData.city;
-          document.getElementById("reviewGender").textContent = formData.gender;
-          document.getElementById("reviewAge").textContent = formData.age;
-          document.getElementById("reviewSymptom").textContent = formData.symptom;
-          document.getElementById("reviewDate").textContent = formData.date;
-          document.getElementById("reviewTime").textContent = formData.time;
-        } else {
-          alert("Please select both date and time.");
-        }
-      });
-
-      // Review Step: Back and Submit buttons
-      back3.addEventListener("click", () => {
-        review.style.display = "none";
-        step3.style.display = "block";
-      });
-
-      // Handle form submission
-      document.getElementById("appointmentForm").addEventListener("submit", (event) => {
-        event.preventDefault(); // Prevent default form submission
-        alert("Appointment booked successfully!");
-        modal.style.display = "none"; // Close the modal
-        // Optionally, you can reset the formData here if needed
-        Object.keys(formData).forEach(key => delete formData[key]);
-        document.getElementById("appointmentForm").reset(); // Reset the form fields
-        step1.style.display = "block"; // Reset to step 1
-        step2.style.display = "none";
-        step3.style.display = "none";
-        review.style.display = "none";
-      });
+    // Close the modal
+    closeModalButton.addEventListener("click", () => {
+      modal.style.display = "none";
     });
 
+    // Close modal when clicking outside of it
+    window.onclick = function (event) {
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    }
   </script>
+
 </body>
 
 </html>

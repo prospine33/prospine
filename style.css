@@ -157,7 +157,6 @@ a:hover {
   padding: 30px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin-bottom: 100px;
-  
 }
 
 .inner-box {
@@ -224,6 +223,12 @@ a:hover {
   /* Center items vertically */
 }
 
+.stat{
+  display: flex;
+  margin-left: 40px;
+  /* width: 50%; */
+}
+
 .stat h2 {
   margin: 0 10px;
   /* Margin around the number */
@@ -231,6 +236,11 @@ a:hover {
   /* Larger font size for prominence */
   color: #007bff;
   /* Blue color for the number */
+}
+
+.stat h3{
+  margin: 5px;
+  font-size: 1.5em;
 }
 
 .stat p {
@@ -255,7 +265,7 @@ a:hover {
   /* Center the text */
   flex-shrink: 0;
   /* Prevent shrinking */
-  width: 25%;
+  width: 30%;
   /* Take up 25% of the width */
 }
 
@@ -955,7 +965,7 @@ video {
 /* Modal Content with Pop-Up Animation */
 .modal-content {
   position: absolute;
-  top: 10%;
+  top: 5%;
   left: 50%;
   transform: translate(50%, -50%);
   margin: 5% auto;
@@ -1087,12 +1097,41 @@ textarea {
 #review p {
   font-size: 20px;
   margin-top: 15px;
-  /* Spacing between review details */
+  margin-bottom: 20px;
+  color: #fff;
 }
 
 #review strong {
   color: #007bff;
   /* Highlighting the strong text */
+}
+
+.reviewh3 {
+  align-items: center;
+  text-align: center;
+  margin: 20px;
+  color: #fff;
+}
+
+.checkbox-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.checkbox-container label {
+  margin-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.checkbox-container input[type="checkbox"] {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 15px; /* Optional: Set width */
+  height: 15px; /* Optional: Set height */
+  transform: scale(1.5); /* Increase size by 1.5 times */
+  -webkit-transform: scale(1.5); /* For Safari compatibility */
+  transform-origin: 0 0; /* Anchor scaling to the top-left */
 }
 
 @media (max-width: 768px) {

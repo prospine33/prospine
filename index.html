@@ -8,6 +8,83 @@
   <link rel="icon" href="image/favicon.png" type="image/x-icon">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .container {
+      width: 90%;
+      display: flex;
+      gap: 20px;
+    }
+
+    .box {
+      background-color: #ffffff;
+      padding: 20px;
+      /* width: 200px; */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      text-align: center;
+      margin: 20px;
+      margin-bottom: 50px;
+    }
+
+    .heading {
+      font-size: 2.5em;
+    }
+
+    .box h3 {
+      margin-bottom: 15px;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .box p {
+      margin-bottom: 15px;
+      font-size: 1.2em;
+      color: #666;
+    }
+
+    /* .box button {
+      padding: 10px 20px;
+      font-size: 16px;
+      color: #fff;
+      background-color: #4CAF50;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .box button:hover {
+      background-color: #45a049;
+    } */
+
+    @media screen and (max-width: 768px) {
+      .heading {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 1.5em;
+      }
+
+      .container {
+        flex-direction: column;
+        margin: 0;
+      }
+
+      .box {
+        width: 100%;
+        margin: 0;
+        margin-bottom: 20px;
+
+      }
+
+      .box button {
+        width: 100%;
+        font-size: 14px;
+      }
+
+      .box p {
+        font-size: 0.9em;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -78,7 +155,7 @@
 
 
         <div class="form-step" id="step2" style="display: none;">
-          <label for="symptom">Your Current Health Condition:</label>
+          <label for="symptom">Reason for Consultation:</label>
           <textarea id="symptom" name="symptom"
             placeholder="Tell us about your current health condition. Type none if you don't have any."
             required></textarea>
@@ -90,6 +167,9 @@
             <option value="female">Female</option>
             <option value="other">Other</option>
           </select>
+
+          <label for="occupation">Occupation</label>
+          <input type="text" id="occupation" name="occupation" required>
 
           <label for="age">Age:</label>
           <input type="number" id="age" name="age" required>
@@ -103,47 +183,55 @@
           <label for="date">Select Date:</label>
           <input type="date" id="date" name="date" required>
 
-          <label for="time">Select Time:</label>
-          <input type="time" id="time" name="time" required>
+          <label for="consultation-type">Consultation Type:</label>
+          <select id="consultation" name="consultationtype" required>
+            <option value="" disabled selected>Select Consultation Type</option>
+            <option value="online">Online</option>
+            <option value="appointment">Appointment</option>
+            <option value="in-person">Home Visit</option>
+          </select>
 
           <button type="button" id="back2">Back</button>
           <button type="button" id="continue3">Continue</button>
         </div>
 
         <div class="form-step" id="review" style="display: none;">
-          <h3>Review Your Details</h3>
+          <h3 class="reviewh3">Review Your Details</h3>
           <p><strong>Name:</strong> <span id="reviewName"></span></p>
           <p><strong>Email:</strong> <span id="reviewEmail"></span></p>
           <p><strong>Mobile:</strong> <span id="reviewMobile"></span></p>
           <p><strong>City:</strong> <span id="reviewCity"></span></p>
           <p><strong>Gender:</strong> <span id="reviewGender"></span></p>
+          <p><strong>Occupation:</strong> <span id="reviewOccupation"></span></p>
           <p><strong>Age:</strong> <span id="reviewAge"></span></p>
           <p><strong>Current Health Condition:</strong> <span id="reviewSymptom"></span></p>
           <p><strong>Date:</strong> <span id="reviewDate"></span></p>
-          <p><strong>Time:</strong> <span id="reviewTime"></span></p>
+          <p><strong>Consultation Type:</strong> <span id="reviewConsultation"></span></p>
 
+          <div class="checkbox-container">
+            <input type="checkbox" name="checkbox" id="checkbox" required>
+            <label for="checkbox">I agree to the terms and conditions.</label>
+          </div>
+          <hr>
+          <p>After submitting, our staff will contact you soon to confirm your appointment.</p>
           <button type="button" id="back3">Back</button>
           <button type="submit">Submit</button>
         </div>
-      </form>
     </div>
+    </form>
   </div>
-
   <div class="box2">
     <div class="inner-box2">
       <div class="stat" id="stat">
         <h2 id="count">0</h2>
-        <h3>Surgeries Avoided</h3>
+        <h3>Happy Patients</h3>
       </div>
       <div class="exp">
         <h2>21+ years of experience</h2>
       </div>
 
-      <div class="staff">
-        <h2>11+ Therapists & Staff</h2>
-      </div>
       <div class="rank">
-        <h3>Ranked #1 in 5 Cities</h3>
+        <h3>Ranked #1 in North East India in Spine Care</h3>
       </div>
     </div>
     <p>
@@ -162,6 +250,31 @@
       specialties to provide comprehensive care.
     </p>
     <a href="prospineapproach.html" class="link">Read More <img src="rarr.svg" alt="right-arrow" /></a>
+  </div>
+
+  <h1 class="heading">Choose Your Consultation Method</h1>
+  <div class="container">
+    <div class="box">
+      <h3>Online Consultation</h3>
+      <p>Get expert advice from the comfort of your home. Our online consultation allows you to connect with qualified
+        professionals through video calls, ensuring you receive personalized care without needing to travel.</p>
+      <button class="btn" onclick="openModal('modalOnline')">Book Now</button>
+    </div>
+    <div class="box">
+      <h3>Appointment Booking</h3>
+
+      <p>Schedule your visit with our specialists easily. Our appointment booking system is user-friendly, enabling you
+        to choose the date that suits you best, ensuring minimal waiting times and a smooth experience.</p>
+
+      <button class="btn" onclick="openModal('modalAppointment')">Book Appointment</button>
+    </div>
+    <div class="box">
+      <h3>Consultation at Home</h3>
+      <p>Request a visit from our healthcare professionals. Our consultation-at-home service is designed for your
+        convenience, providing you with high-quality care in the comfort of your own home, tailored to your specific
+        needs.</p>
+      <button class="btn" onclick="openModal('modalHome')">Request Visit</button>
+    </div>
   </div>
 
   <div class="box4">
@@ -213,9 +326,6 @@
     <br>
     <h3 class="servh">Conditions We Treat</h3>
     <div class="serv">
-      <div class="serv1">
-        <a href="#">Electrodiognosis</a>
-      </div>
       <div class="serv1">
         <a href="#">Herniated Disc</a>
       </div>
@@ -491,6 +601,7 @@
   <script src="script.js"></script>
 
   <script>
+
   </script>
 </body>
 

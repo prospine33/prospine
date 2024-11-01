@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("DOMContentLoaded", function () {
   // Counting Animation
-  const target = 25000; // Target number
+  const target = 45000; // Target number
   const duration = 15000; // Duration of the animation in milliseconds
   const increment = Math.ceil(target / (duration / 100)); // Increment value
   let count = 0; // Initial count
@@ -84,57 +84,6 @@ document.addEventListener("DOMContentLoaded", function () {
     showVideo(currentVideoIndex);
   })(); // IIFE to encapsulate video slider functionality
 
-  // Image Slider
-  const imageSlider = (function () {
-    const slides = document.querySelectorAll(".slide");
-    const dotsContainer = document.querySelector(".dots");
-    const prevButton = document.getElementById("prev");
-    const nextButton = document.getElementById("next");
-    let currentSlideIndex = 0; // Renamed variable to avoid conflicts
-
-    // Calculate total pages (2 slides per page)
-    const totalPages = Math.ceil(slides.length / 2);
-
-    // Create dots for each page
-    for (let i = 0; i < totalPages; i++) {
-      const dot = document.createElement("span");
-      dot.classList.add("dot");
-      dot.dataset.index = i;
-      dot.addEventListener("click", () => goToSlide(i));
-      dotsContainer.appendChild(dot);
-    }
-
-    const updateDots = () => {
-      const dots = document.querySelectorAll(".dot");
-      dots.forEach((dot) => dot.classList.remove("active"));
-      dots[Math.floor(currentSlideIndex / 2)].classList.add("active");
-    };
-
-    const showSlide = (pageIndex) => {
-      currentSlideIndex = pageIndex * 2; // Each page index corresponds to two slides
-      const sliderContainer = document.querySelector(".slider-container");
-      sliderContainer.style.transform = `translateX(-${pageIndex * 50}%)`; // Move by 50% per page
-      updateDots();
-    };
-
-    const goToSlide = (pageIndex) => {
-      showSlide(pageIndex);
-    };
-
-    // Event listeners for navigation
-    prevButton.addEventListener("click", () => {
-      const newPageIndex = (Math.floor(currentSlideIndex / 2) - 1 + totalPages) % totalPages;
-      showSlide(newPageIndex);
-    });
-
-    nextButton.addEventListener("click", () => {
-      const newPageIndex = (Math.floor(currentSlideIndex / 2) + 1) % totalPages;
-      showSlide(newPageIndex);
-    });
-
-    // Initialize
-    showSlide(0); // Display the first slide
-  })(); // IIFE to encapsulate image slider functionality
 });
 
 
@@ -203,11 +152,12 @@ document.addEventListener("DOMContentLoaded", () => {
   continue2.addEventListener("click", () => {
     // Collect data from step 2
     formData.gender = document.getElementById("gender").value;
+    formData.occupation = document.getElementById("occupation").value;
     formData.age = document.getElementById("age").value;
     formData.symptom = document.getElementById("symptom").value;
 
     // Validation: Check if all fields are filled
-    if (!formData.gender || !formData.age || !formData.symptom) {
+    if (!formData.gender || !formData.occupation || !formData.age || !formData.symptom) {
       alert("Please fill in all fields.");
     } else {
       // Switch to step 3
@@ -225,11 +175,11 @@ document.addEventListener("DOMContentLoaded", () => {
   continue3.addEventListener("click", () => {
     // Collect data from step 3
     formData.date = document.getElementById("date").value;
-    formData.time = document.getElementById("time").value;
+    formData.consultation = document.getElementById("consultation").value;
 
     // Validation: Check if date and time are selected
-    if (!formData.date || !formData.time) {
-      alert("Please select both date and time.");
+    if (!formData.date || !formData.consultation) {
+      alert("Please select date and Consultation Type");
     } else {
       // Switch to review step
       step3.style.display = "none";
@@ -241,10 +191,11 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("reviewMobile").textContent = formData.mobile;
       document.getElementById("reviewCity").textContent = formData.city;
       document.getElementById("reviewGender").textContent = formData.gender;
+      document.getElementById("reviewOccupation").textContent = formData.occupation;
       document.getElementById("reviewAge").textContent = formData.age;
       document.getElementById("reviewSymptom").textContent = formData.symptom;
       document.getElementById("reviewDate").textContent = formData.date;
-      document.getElementById("reviewTime").textContent = formData.time;
+      document.getElementById("reviewConsultation").textContent = formData.consultation;
     }
   });
 
@@ -257,14 +208,51 @@ document.addEventListener("DOMContentLoaded", () => {
   // Handle form submission
   document.getElementById("appointmentForm").addEventListener("submit", (event) => {
     event.preventDefault(); // Prevent default form submission
-    alert("Appointment booked successfully!");
-    modal.style.display = "none"; // Close the modal
-    // Optionally, you can reset the formData here if needed
-    Object.keys(formData).forEach(key => delete formData[key]);
-    document.getElementById("appointmentForm").reset(); // Reset the form fields
-    step1.style.display = "block"; // Reset to step 1
-    step2.style.display = "none";
-    step3.style.display = "none";
-    review.style.display = "none";
+
+    // Disable the submit button to prevent multiple clicks
+    const submitButton = event.submitter; // Get the button that triggered the submit event
+    submitButton.disabled = true;
+    submitButton.textContent = "Submitting..."; // Optional: Change button text to indicate loading
+
+    // Collect form data
+    const formData = {
+      name: document.getElementById("name").value,
+      email: document.getElementById("email").value,
+      mobile: document.getElementById("mobile").value,
+      city: document.getElementById("city").value,
+      gender: document.getElementById("gender").value,
+      occupation: document.getElementById("occupation").value,
+      age: document.getElementById("age").value,
+      symptom: document.getElementById("symptom").value,
+      date: document.getElementById("date").value,
+      consultation: document.getElementById("consultation").value,
+    };
+
+    // Prepare URL-encoded string of the form data
+    const params = new URLSearchParams(formData).toString();
+
+    // Send data to Google Apps Script URL
+    fetch("https://script.google.com/macros/s/AKfycbxCnXh-W1lWqi3hDOcR6KLyCEewdGViN7gWHsmC8plrrrWi2Xy-tmqILHCVBWqViRRI1A/exec" + "?" + params, { method: "POST" })
+      .then(response => response.text())
+      .then(data => {
+        alert("Appointment booked successfully!");
+        document.getElementById("appointmentForm").reset(); // Reset form fields
+        modal.style.display = "none"; // Close the modal
+        location.reload(); // Reload the page to reset the form and steps
+      })
+      .catch(error => {
+        console.error("Error:", error);
+        alert("Failed to submit form. Please try again.");
+        submitButton.disabled = false; // Re-enable the button if submission fails
+        submitButton.textContent = "Submit"; // Reset button text
+      });
   });
+
 });
+
+const modal = document.getElementById("modal");
+const closeModalButton = document.getElementById("closeModal");
+
+function openModal(consultationType) {
+  modal.style.display = "block";
+}
