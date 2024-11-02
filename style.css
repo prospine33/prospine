@@ -223,7 +223,7 @@ a:hover {
   /* Center items vertically */
 }
 
-.stat {
+.stat{
   display: flex;
   margin-left: 40px;
   /* width: 50%; */
@@ -238,7 +238,7 @@ a:hover {
   /* Blue color for the number */
 }
 
-.stat h3 {
+.stat h3{
   margin: 5px;
   font-size: 1.5em;
 }
@@ -976,7 +976,7 @@ video {
   max-width: 600px;
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
-  background-color: rgba(255, 255, 255, 0.848);
+  background-color: rgba(37, 37, 37, 0.626);
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.125);
   animation: zoomIn 0.8s ease forwards; /* Apply animation on open */
@@ -1000,18 +1000,16 @@ video {
 }
 
 .modal-content h2 {
-  color: #000000;
+  color: #fff;
   text-align: center;
   align-items: center;
 }
 
 label {
   font-weight: bold;
-  font-size: 1.2em;
-  margin-bottom: 15px;
-  margin-top: 15px;
+  margin-bottom: 5px;
   display: block;
-  color: #333;
+  color: #fff;
   /* Make labels block elements */
 }
 
@@ -1071,7 +1069,7 @@ button[type="submit"]:hover {
 }
 
 .close {
-  color: #333;
+  color: #ffffff;
   float: right;
   font-size: 28px;
   font-weight: bold;
@@ -1079,7 +1077,7 @@ button[type="submit"]:hover {
 
 .close:hover,
 .close:focus {
-  color: #000;
+  color: #dddddd;
   /* Change close button color on hover */
   text-decoration: none;
   cursor: pointer;
@@ -1134,39 +1132,6 @@ textarea {
   transform: scale(1.5); /* Increase size by 1.5 times */
   -webkit-transform: scale(1.5); /* For Safari compatibility */
   transform-origin: 0 0; /* Anchor scaling to the top-left */
-}
-
-.container {
-  width: 90%;
-  display: flex;
-  gap: 20px;
-}
-
-.box {
-  background-color: #ffffff;
-  padding: 20px;
-  /* width: 200px; */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
-  text-align: center;
-  margin: 20px;
-  margin-bottom: 50px;
-}
-
-.heading {
-  font-size: 2.5em;
-}
-
-.box h3 {
-  margin-bottom: 15px;
-  font-size: 18px;
-  color: #333;
-}
-
-.box p {
-  margin-bottom: 15px;
-  font-size: 1.2em;
-  color: #666;
 }
 
 @media (max-width: 768px) {
@@ -1571,30 +1536,5 @@ textarea {
 
   .item1 a {
     font-size: 0.7em;
-  }
-  .heading {
-    margin-top: 20px;
-    text-align: center;
-    font-size: 1.5em;
-  }
-
-  .container {
-    flex-direction: column;
-    margin: 0;
-  }
-
-  .box {
-    width: 100%;
-    margin: 0;
-    margin-bottom: 20px;
-  }
-
-  .box button {
-    width: 100%;
-    font-size: 14px;
-  }
-
-  .box p {
-    font-size: 0.9em;
   }
 }

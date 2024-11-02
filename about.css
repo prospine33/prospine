@@ -5,66 +5,39 @@
   text-align: center;
   justify-content: center;
 }
-
+.box1 .inner-box {
+}
 .box1 p {
   max-width: 100%;
 }
 
-/* .box2 {
+.box2 {
   align-items: center;
   justify-content: center;
   text-align: center;
-  border: 1px solid;
-} */
-
-.box3{
-  /* border: 1px solid; */
-  padding: 10px;
 }
 
+.box2 h2 {
+  margin-top: 20px;
+  font-size: 2em;
+}
+
+.box2 h3 {
+  margin: 10px;
+  font-size: 1.5em;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.per {
+  display: flex;
+
+  padding: 10px;
+}
 
 .per p {
   padding: 20px;
   width: 50%;
-}
-
-.container {
-  width: 90%;
-  /* max-width: 800px; */
-  margin: 0 auto;
-  padding: 20px;
-  text-align: center;
-}
-h1, h2 {
-  color: #004aad;
-}
-h1 {
-  text-align: center;
-  margin-bottom: 10px;
-  font-size: 2.6em;
-}
-h2 {
-  /* margin-top: 50px; */
-  margin-bottom: 30px;
-}
-.section {
-  margin-bottom: 30px;
-}
-.cta {
-  text-align: center;
-  margin-top: 20px;
-}
-.cta button {
-  background-color: #004aad;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-.cta button:hover {
-  background-color: #003078;
 }
 
 @media screen and (max-width: 768px) {

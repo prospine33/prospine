@@ -8,6 +8,83 @@
   <link rel="icon" href="image/favicon.png" type="image/x-icon">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .container {
+      width: 90%;
+      display: flex;
+      gap: 20px;
+    }
+
+    .box {
+      background-color: #ffffff;
+      padding: 20px;
+      /* width: 200px; */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      text-align: center;
+      margin: 20px;
+      margin-bottom: 50px;
+    }
+
+    .heading {
+      font-size: 2.5em;
+    }
+
+    .box h3 {
+      margin-bottom: 15px;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .box p {
+      margin-bottom: 15px;
+      font-size: 1.2em;
+      color: #666;
+    }
+
+    /* .box button {
+      padding: 10px 20px;
+      font-size: 16px;
+      color: #fff;
+      background-color: #4CAF50;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .box button:hover {
+      background-color: #45a049;
+    } */
+
+    @media screen and (max-width: 768px) {
+      .heading {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 1.5em;
+      }
+
+      .container {
+        flex-direction: column;
+        margin: 0;
+      }
+
+      .box {
+        width: 100%;
+        margin: 0;
+        margin-bottom: 20px;
+
+      }
+
+      .box button {
+        width: 100%;
+        font-size: 14px;
+      }
+
+      .box p {
+        font-size: 0.9em;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -522,6 +599,10 @@
   </footer>
 
   <script src="script.js"></script>
+
+  <script>
+
+  </script>
 </body>
 
 </html>
