@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Pro Spine</title>
+    <link rel="icon" href="image/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="treatment.css">
+    <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo-container">
+            <a href="index.html"><img src="image/logo.png" alt="Pro Physio Logo" class="logo"></a>
+        </div>
+
+        <nav>
+            <div class="nav-container">
+                <div class="hamburger" id="hamburger">
+                    &#9776;
+                </div>
+                <div class="nav-links" id="navLinks">
+                    <a href="prospineapproach.html">Why Pro Spine</a>
+                    <a href="treatment.html">Conditions We Treat</a>
+                    <a href="team.html">Our Team</a>
+                    <a href="testimonials.html">Testimonials</a>
+                    <a href="events.html">Events</a>
+                    <a href="career.html">Career</a>
+                    <a href="aboutus.html">About Us</a>
+                    <a href="contact.html" class="link active">Contact Us</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="header-right">
+            <a href="tel:+919939121212" class="contact-number">Call us: +91 9939121212</a>
+            <!-- <button class="appointment-btn">Book Now!</button> -->
+        </div>
+    </header>
+
+    <div class="box1">
+        <div class="inner-box">
+            <h1>Reach Out to Start Your Journey to Better Health</h1>
+            <p>We’re here to help! Give us a call, or share your number, and we’ll get in touch with you.</p>
+            <br>
+            <button class="btn" id="openModal" role="button">Book an Appointment</button>
+
+            <br />
+
+            <hr class="hr2 hr">
+        </div>
+    </div>
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <h2>Book an Appointment</h2>
+            <form id="appointmentForm">
+
+                <div class="form-step" id="step1">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="mobile">Mobile:</label>
+                    <input type="tel" id="mobile" name="mobile" required>
+
+                    <label for="city">City:</label>
+                    <input type="text" id="city" name="city" required>
+
+                    <button type="button" id="continue1">Continue</button>
+                </div>
+
+
+                <div class="form-step" id="step2" style="display: none;">
+                    <label for="symptom">Reason for Consultation:</label>
+                    <textarea id="symptom" name="symptom"
+                        placeholder="Tell us about your current health condition. Type none if you don't have any."
+                        required></textarea>
+
+                    <label for="gender">Gender:</label>
+                    <select id="gender" name="gender" required>
+                        <option value="" disabled selected>Select your gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+
+                    <label for="occupation">Occupation</label>
+                    <input type="text" id="occupation" name="occupation" required>
+
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" name="age" required>
+
+                    <button type="button" id="back1">Back</button>
+                    <button type="button" id="continue2">Continue</button>
+                </div>
+
+
+                <div class="form-step" id="step3" style="display: none;">
+                    <label for="date">Select Date:</label>
+                    <input type="date" id="date" name="date" required>
+
+                    <label for="consultation-type">Consultation Type:</label>
+                    <select id="consultation" name="consultationtype" required>
+                        <option value="" disabled selected>Select Consultation Type</option>
+                        <option value="online">Online</option>
+                        <option value="appointment">Appointment</option>
+                        <option value="in-person">Home Visit</option>
+                    </select>
+
+                    <button type="button" id="back2">Back</button>
+                    <button type="button" id="continue3">Continue</button>
+                </div>
+
+                <div class="form-step" id="review" style="display: none;">
+                    <h3 class="reviewh3">Review Your Details</h3>
+                    <p><strong>Name:</strong> <span id="reviewName"></span></p>
+                    <p><strong>Email:</strong> <span id="reviewEmail"></span></p>
+                    <p><strong>Mobile:</strong> <span id="reviewMobile"></span></p>
+                    <p><strong>City:</strong> <span id="reviewCity"></span></p>
+                    <p><strong>Gender:</strong> <span id="reviewGender"></span></p>
+                    <p><strong>Occupation:</strong> <span id="reviewOccupation"></span></p>
+                    <p><strong>Age:</strong> <span id="reviewAge"></span></p>
+                    <p><strong>Current Health Condition:</strong> <span id="reviewSymptom"></span></p>
+                    <p><strong>Date:</strong> <span id="reviewDate"></span></p>
+                    <p><strong>Consultation Type:</strong> <span id="reviewConsultation"></span></p>
+
+                    <div class="checkbox-container">
+                        <input type="checkbox" name="checkbox" id="checkbox" required>
+                        <label for="checkbox">I agree to the terms and conditions.</label>
+                    </div>
+                    <hr>
+                    <p>After submitting, our staff will contact you soon to confirm your appointment.</p>
+                    <button type="button" id="back3">Back</button>
+                    <button type="submit">Submit</button>
+                </div>
+        </div>
+        </form>
+    </div>
+
+    <div class="box3">
+        <h2>How can we assist you?</h2>
+        <p>Accessing ProSpine services is just a click away!</p>
+        <div class="container">
+            <div class="box">
+                <h3>Online Consultation</h3>
+                <p>Get expert advice from the comfort of your home. Our online consultation allows you to connect with
+                    qualified
+                    professionals through video calls, ensuring you receive personalized care without needing to travel.
+                </p>
+                <button class="btn" onclick="openModal('modalOnline')">Book Now</button>
+            </div>
+            <div class="box">
+                <h3>Appointment Booking</h3>
+
+                <p>Schedule your visit with our specialists easily. Our appointment booking system is user-friendly,
+                    enabling you
+                    to choose the date that suits you best, ensuring minimal waiting times and a smooth experience.</p>
+
+                <button class="btn" onclick="openModal('modalAppointment')">Book Appointment</button>
+            </div>
+            <div class="box">
+                <h3>Consultation at Home</h3>
+                <p>Request a visit from our healthcare professionals. Our consultation-at-home service is designed for
+                    your
+                    convenience, providing you with high-quality care in the comfort of your own home, tailored to your
+                    specific
+                    needs.</p>
+                <button class="btn" onclick="openModal('modalHome')">Request Visit</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="box5">
+        <div class="choose">
+            <h2>Reach Out to Start Your Journey to Better Health</h2>
+            <br>
+            <div class="description">
+                <p>Have any doubts? Feel free to contact us</p>
+            </div>
+            <div class="icons">
+                <a href="mailto:info@prospine.com" class="icon" title="Email Us"><i class="fas fa-envelope"></i> |
+                    testmail@mail.com</a>
+                <a href="tel:+919939121212" class="icon" title="Call Us"><i class="fas fa-phone-alt"></i> |
+                    +91-9939-121212</a>
+                <a href="https://maps.app.goo.gl/zfFGr3ShXtHJfHh57" target="_blank" class="icon"
+                    title="Find Us on the Map"><i class="fas fa-map-marker-alt"></i> | SVN Road, Aadampur, Bhagalpur</a>
+            </div>
+        </div>
+        <div class="choose choose2">
+            <h2>Would you like us to call you?</h2>
+            <div class="description">
+                <p>Need assistance? Request a call back from our support team!</p>
+            </div>
+            <div class="form">
+                <form>
+                    <input type="text" placeholder="Name" name="name" id="name">
+                    <input type="tel" name="phone" id="phone" placeholder="Phone Number" required>
+                    <button type="submit">Request a Call</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-quote">
+                <h2>"Let challenges shape you, not stop you."</h2>
+                <img src="image/logo.png" alt="Logo" class="logo">
+            </div>
+            <hr class="hr">
+            <div class="footer-sections">
+                <div class="about-section footer-section">
+                    <h3>About us</h3>
+                    <ul>
+                        <li><a href="#">Vision</a></li>
+                        <li><a href="#">People</a></li>
+                        <li><a href="#">Partners</a></li>
+                        <li><a href="#">Awards & Affiliations</a></li>
+                        <li><a href="testimonials.html">Testimonials</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><a href="#">Locations</a></li>
+                        <li><a href="#">Contacts</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Conditions We Treat</h3>
+                    <ul>
+                        <li><a href="#">Herniated Disc</a></li>
+                        <li><a href="#">Spondylolisthesis</a></li>
+                        <li><a href="#">Degenerative Disc</a></li>
+                        <li><a href="#">Brachial Neuralgia</a></li>
+                        <li><a href="#">Disc Prolapse</a></li>
+                        <li><a href="#">Retrolisthesis</a></li>
+                        <li><a href="#">Scoliosis</a></li>
+                        <li><a href="#">Facet Joint Syndrome</a></li>
+                        <li><a href="#">Thecal Compression</a></li>
+                        <li><a href="treatment.html">See All >></a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="prospineapproach.html">Why Pro Spine</a></li>
+                        <li><a href="#">Portfolio</a></li>
+                        <li><a href="#">Events</a></li>
+                        <li><a href="#">Carrier</a></li>
+                        <li><a href="#">Manipal Physiotherapy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright © 2025, ProSpine. All rights reserved.</p>
+            <ul class="footer-links">
+                <li><a href="#">Terms & conditions</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
+            <div class="social-icons">
+                <a href="#"><img src="image/facebook-icon.png" alt="Facebook"></a>
+                <a href="#"><img src="image/twitter-icon.png" alt="Twitter"></a>
+                <a href="#"><img src="image/icons8-instagram-48.png" alt="Instagram"></a>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
