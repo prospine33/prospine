@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Appointments</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f8f9fa; margin: 0; padding: 20px; }
+        .container { max-width: 800px; margin: auto; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+        h2 { text-align: center; color: #333; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 10px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background: #007bff; color: white; }
+        tr:hover { background: #f1f1f1; }
+        .back-btn { display: block; width: fit-content; margin: 20px auto; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; text-align: center; }
+        .back-btn:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Basic Appointments</h2>
+    <table id="appointments-table">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Submitted On</th>
+        </tr>
+    </table>
+    <!-- <a href="#" class="back-btn">Back to Home</a> -->
+</div>
+
+<script>
+async function fetchAppointments() {
+    try {
+        let response = await fetch("https://sumit11.serv00.net/prospine/appointments.php");
+        let data = await response.json();
+
+        let table = document.getElementById("appointments-table");
+        data.forEach(appointment => {
+            let row = table.insertRow();
+            row.innerHTML = `<td>${appointment.id}</td>
+                             <td>${appointment.name}</td>
+                             <td>${appointment.phone}</td>
+                             <td>${appointment.created_at}</td>`;
+        });
+    } catch (error) {
+        console.error("Error fetching data:", error);
+    }
+}
+
+// Load data when page loads
+fetchAppointments();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Prospine</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 0; }
+        .container { max-width: 900px; margin: 40px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+        h2 { text-align: center; color: #333; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 12px; border: 1px solid #ddd; text-align: left; }
+        th { background: #007bff; color: white; }
+        tbody tr:nth-child(even) { background: #f9f9f9; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Appointment Requests</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Full Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Consultation Type</th>
+                <th>Condition</th>
+                <th>Contact Method</th>
+            </tr>
+        </thead>
+        <tbody id="appointmentTable"></tbody>
+    </table>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    fetch("https://sumit11.serv00.net/prospine/fetch_appointments.php")
+        .then(response => response.json())
+        .then(data => {
+            const table = document.getElementById("appointmentTable");
+            if (data.error) {
+                table.innerHTML = `<tr><td colspan="7">Error fetching data</td></tr>`;
+                return;
+            }
+
+            data.forEach(appointment => {
+                const row = `<tr>
+                    <td>${appointment.id}</td>
+                    <td>${appointment.fullName}</td>
+                    <td>${appointment.phone}</td>
+                    <td>${appointment.email}</td>
+                    <td>${appointment.consultationType}</td>
+                    <td>${appointment.medical_condition}</td>
+                    <td>${appointment.contactMethod}</td>
+                </tr>`;
+                table.innerHTML += row;
+            });
+        })
+        .catch(error => {
+            document.getElementById("appointmentTable").innerHTML = `<tr><td colspan="7">Error loading data</td></tr>`;
+        });
+});
+</script>
+
+</body>
+</html>
