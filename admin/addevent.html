@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enter Event</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #f4f4f4;
+        color: #333;
+      }
+      h2 {
+        text-align: center;
+        margin-top: 50px;
+      }
+      form {
+        max-width: 500px;
+        margin: 20px auto;
+        padding: 20px;
+        background: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        text-align: center;
+      }
+      label {
+        display: block;
+        margin-top: 10px;
+      }
+      input[type="text"],
+      input[type="date"],
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        box-sizing: border-box;
+      }
+      textarea {
+        height: 100px;
+      }
+      button {
+        padding: 10px 20px;
+        margin-top: 10px;
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Enter Event Details</h2>
+    <form
+      action="https://sumit11.serv00.net/prospine/insert_event.php"
+      method="post"
+    >
+      <label>Title:</label>
+      <input type="text" name="title" required /><br />
+      <label>Description:</label>
+      <textarea name="description" required></textarea><br />
+      <label>Date:</label>
+      <input type="date" name="event_date" required /><br />
+      <label>Image URL:</label>
+      <input type="text" name="image_url" required /><br />
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
