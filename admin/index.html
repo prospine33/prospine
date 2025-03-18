@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Prospine</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f4f4f4; color: #333; }
+        .container { max-width: 800px; margin: 50px auto; padding: 20px; background: white; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); border-radius: 10px; text-align: center; }
+        h1 { color: #333; }
+        p { font-size: 1.1em; line-height: 1.6; }
+
+        .btn-container { margin-top: 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+        .btn { text-decoration: none; font-size: 1.1em; padding: 12px 20px; border-radius: 8px; transition: 0.3s; border: none; display: inline-block; font-weight: bold; }
+        .btn-view { background: #007bff; color: white; }
+        .btn-view:hover { background: #0056b3; }
+
+        @media (max-width: 600px) {
+            .btn { width: 80%; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Admin Panel - Prospine</h1>
+    <p>Manage and review all appointment requests and bookings.</p>
+    <p>Select an option below to view the data:</p>
+
+    <div class="btn-container">
+        <a href="appointmentreq.html" class="btn btn-view">View Appointment Requests</a>
+        <a href="appointments.html" class="btn btn-view">View Appointment Bookings</a>
+    </div>
+</div>
+
+</body>
+</html>
+
