@@ -1,39 +1,303 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel - Prospine</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../image/favicon.png" type="image/x-icon" />
+    <title>Admin Dashboard - Prospine</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f4f4f4; color: #333; }
-        .container { max-width: 800px; margin: 50px auto; padding: 20px; background: white; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); border-radius: 10px; text-align: center; }
-        h1 { color: #333; }
-        p { font-size: 1.1em; line-height: 1.6; }
+      /* Your existing CSS remains unchanged */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+      body {
+        display: flex;
+        min-height: 100vh;
+        background: linear-gradient(to right, #ffffff 0%, #0cac9c);
+      }
+      .sidebar {
+        width: 250px;
+        background-color: #0cac9c7c;
+        color: rgb(0, 0, 0);
+        padding: 20px;
+        position: fixed;
+        height: 100vh;
+        border-radius: 0px 40px 40px 0px;
+        box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.5);
+      }
 
-        .btn-container { margin-top: 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
-        .btn { text-decoration: none; font-size: 1.1em; padding: 12px 20px; border-radius: 8px; transition: 0.3s; border: none; display: inline-block; font-weight: bold; }
-        .btn-view { background: #007bff; color: white; }
-        .btn-view:hover { background: #0056b3; }
-
-        @media (max-width: 600px) {
-            .btn { width: 80%; text-align: center; }
+      .logo {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .logo img {
+        width: 200px;
+        /* height: 150px; */
+      }
+      .sidebar h2 {
+        margin-bottom: 20px;
+      }
+      .nav-links {
+        list-style: none;
+        padding: 0;
+      }
+      .nav-links li {
+        margin: 10px 0;
+      }
+      .nav-links a {
+        text-decoration: none;
+        color: rgb(0, 0, 0);
+        font-size: 1.1em;
+        display: block;
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 5px;
+        transition: 0.3s;
+      }
+      .nav-links a:hover {
+        background-color: #eeeeee69;
+        color: rgb(255, 81, 0);
+      }
+      .main-content {
+        margin-left: 270px;
+        padding: 20px;
+        flex-grow: 1;
+      }
+      .dashboard-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+      }
+      .card {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+      .card h3 {
+        margin-bottom: 10px;
+        color: #333;
+      }
+      .card p {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: #007bff;
+      }
+      .data-section {
+        margin-top: 30px;
+      }
+      .data-section h2 {
+        margin-bottom: 10px;
+      }
+      .data-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        border-radius: 8px;
+        overflow: hidden;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+      .data-table th,
+      .data-table td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      .data-table th {
+        background: #007bff;
+        color: white;
+      }
+      @media (max-width: 768px) {
+        .sidebar {
+          width: 200px;
         }
+        .main-content {
+          margin-left: 220px;
+        }
+        .cards {
+          grid-template-columns: 1fr;
+        }
+      }
     </style>
-</head>
-<body>
-
-<div class="container">
-    <h1>Admin Panel - Prospine</h1>
-    <p>Manage and review all appointment requests and bookings.</p>
-    <p>Select an option below to view the data:</p>
-
-    <div class="btn-container">
-        <a href="appointmentreq.html" class="btn btn-view">View Appointment Requests</a>
-        <a href="appointments.html" class="btn btn-view">View Appointment Bookings</a>
-        <a href="addevent.html" class="btn btn-view">Add Event</a>
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <img src="../image/logo.png" alt="logo">
+        </div>
+      <h2>Admin Panel</h2>
+      <ul class="nav-links">
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="appointmentreq.html">Appointment Requests</a></li>
+        <li><a href="appointments.html">Appointment Bookings</a></li>
+        <li><a href="jobsreq.html">Job Applications</a></li>
+        <li><a href="addevent.html">Add Event</a></li>
+      </ul>
     </div>
-</div>
 
-</body>
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="dashboard-header">
+        <h1>Dashboard</h1>
+      </div>
+
+      <!-- Overview Cards -->
+      <div class="cards">
+        <div class="card">
+          <h3>Appointments Requests</h3>
+          <p id="appointments-count">--</p>
+        </div>
+        <div class="card">
+          <h3>Appointments Bookings</h3>
+          <p id="bookings-count">--</p>
+        </div>
+        <div class="card">
+          <h3>Job Applications</h3>
+          <p id="jobs-count">--</p>
+        </div>
+      </div>
+
+      <!-- Data Sections -->
+      <div class="data-section">
+        <h2>Appointment Bookings</h2>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Full Name</th>
+              <th>Consultation Type</th>
+              <th>Phone</th>
+              <th>Age</th>
+              <th>Gender</th>
+              <th>Contact Method</th>
+              <th>Submission Date</th>
+            </tr>
+          </thead>
+          <tbody id="appointmentBookingsTable"></tbody>
+        </table>
+        <br>
+        <h2>Appointment Requests</h2>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Full Name</th>
+              <th>Phone</th>
+              <th>Submission Date</th>
+            </tr>
+          </thead>
+          <tbody id="appointmentRequestsTable"></tbody>
+        </table>
+        <br>
+        <h2>Job Applications</h2>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Full Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Message</th>
+              <th>Submission Date</th>
+            </tr>
+          </thead>
+          <tbody id="jobApplicationsTable"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <script>
+      async function fetchData() {
+        try {
+          let response = await fetch("https://sumit11.serv00.net/prospine/dash.php");
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          let data = await response.json();
+          console.log("Fetched Data:", data); // For debugging
+
+          // Update card counts
+          document.getElementById("appointments-count").textContent = data.appointments.length || 0;
+          document.getElementById("bookings-count").textContent = data.appointmentsBooking?.length || 0;
+          document.getElementById("jobs-count").textContent = data.jobs.length || 0;
+
+          // Populate Appointment Bookings table
+          let bookingsTable = document.getElementById("appointmentBookingsTable");
+          bookingsTable.innerHTML = "";
+          if (data.appointmentsBooking && Array.isArray(data.appointmentsBooking)) {
+            data.appointmentsBooking.forEach((app) => {
+              let row = `<tr>
+                <td>${app.id || "--"}</td>
+                <td>${app.fullName || "--"}</td>
+                <td>${app.consultationType || "--"}</td>
+                <td>${app.phone || "--"}</td>
+                <td>${app.age || "--"}</td>
+                <td>${app.gender || "--"}</td>
+                <td>${app.contactMethod || "--"}</td>
+                <td>${app.created_at || "--"}</td>
+              </tr>`;
+              bookingsTable.innerHTML += row;
+            });
+          } else {
+            bookingsTable.innerHTML = "<tr><td colspan='8'>No bookings available</td></tr>";
+          }
+
+          // Populate Appointment Requests table
+          let requestsTable = document.getElementById("appointmentRequestsTable");
+          requestsTable.innerHTML = "";
+          if (data.appointments && Array.isArray(data.appointments)) {
+            data.appointments.forEach((app) => {
+              let row = `<tr>
+                <td>${app.id || "--"}</td>
+                <td>${app.name || "--"}</td>
+                <td>${app.phone || "--"}</td>
+                <td>${app.created_at || "--"}</td>
+              </tr>`;
+              requestsTable.innerHTML += row;
+            });
+          } else {
+            requestsTable.innerHTML = "<tr><td colspan='4'>No requests available</td></tr>";
+          }
+
+          // Populate Job Applications table
+          let jobTable = document.getElementById("jobApplicationsTable");
+          jobTable.innerHTML = "";
+          if (data.jobs && Array.isArray(data.jobs)) {
+            data.jobs.forEach((job) => {
+              let row = `<tr>
+                <td>${job.full_name || "--"}</td>
+                <td>${job.email || "--"}</td>
+                <td>${job.phone || "--"}</td>
+                <td>${job.message || "--"}</td>
+                <td>${job.submission_date || "--"}</td>
+              </tr>`;
+              jobTable.innerHTML += row;
+            });
+          } else {
+            jobTable.innerHTML = "<tr><td colspan='5'>No applications available</td></tr>";
+          }
+
+        } catch (error) {
+          console.error("Error fetching data:", error);
+          // Display error message on the page
+          document.querySelectorAll(".data-table tbody").forEach((tbody) => {
+            tbody.innerHTML = `<tr><td colspan="${tbody.parentElement.querySelectorAll('th').length}">Error loading data: ${error.message}</td></tr>`;
+          });
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", fetchData);
+    </script>
+  </body>
 </html>
-
