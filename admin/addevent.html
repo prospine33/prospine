@@ -3,72 +3,334 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style/appointment.css" />
+    <link rel="icon" href="../image/favicon.png" type="image/x-icon" />
     <title>Enter Event</title>
     <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background: #f4f4f4;
-        color: #333;
-      }
       h2 {
+        margin-top: 20px;
+        color: #007bff;
         text-align: center;
-        margin-top: 50px;
       }
+
       form {
+        margin-left: 290px;
+        width: 90%;
         max-width: 500px;
-        margin: 20px auto;
-        padding: 20px;
+        max-height: 500px;
+        margin-top: 20px;
         background: white;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
         border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         text-align: center;
       }
+
       label {
         display: block;
-        margin-top: 10px;
+        margin: 10px 0 5px;
+        font-weight: bold;
+        text-align: left;
       }
-      input[type="text"],
-      input[type="date"],
+
+      input,
       textarea {
         width: 100%;
         padding: 10px;
-        margin-top: 5px;
-        box-sizing: border-box;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
       }
-      textarea {
-        height: 100px;
-      }
+
       button {
         padding: 10px 20px;
-        margin-top: 10px;
         background: #007bff;
         color: white;
         border: none;
         border-radius: 5px;
         cursor: pointer;
+        font-size: 16px;
       }
+
       button:hover {
         background: #0056b3;
+      }
+
+      .events-container {
+        width: 70%;
+        max-width: 1000px;
+        max-height: 1100px;
+        overflow-y: auto;
+        margin-left: 30px;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 20px;
+        background-color: #ffffffc0;
+        margin-bottom: 20px;
+        border-radius: 30px;
+      }
+
+      .event-card {
+        width: 90%;
+        min-height: 300px;
+        margin: 10px;
+        margin-bottom: 20px;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .event-card img {
+        width: 400px;
+        height: auto;
+        object-fit: cover;
+        border-radius: 5px;
+        margin-right: 15px;
+      }
+
+      .event-card .text-container {
+        flex-grow: 1;
+      }
+
+      .event-card h3 {
+        margin: 0 0 10px;
+        color: #007bff;
+      }
+
+      .event-card p {
+        margin: 5px 0;
+        color: #333;
+      }
+
+      .buttons {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        display: flex;
+        gap: 5px;
+      }
+
+      .edit-btn,
+      .delete-btn {
+        padding: 5px 10px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 14px;
+      }
+
+      .edit-btn {
+        background-color: #28a745;
+        color: white;
+      }
+
+      .edit-btn:hover {
+        background-color: #218838;
+      }
+
+      .delete-btn {
+        background-color: #dc3545;
+        color: white;
+      }
+
+      .delete-btn:hover {
+        background-color: #c82333;
       }
     </style>
   </head>
   <body>
-    <h2>Enter Event Details</h2>
+    <div class="sidebar">
+      <div class="logo">
+        <img src="../image/logo.png" alt="logo" />
+      </div>
+      <h2>Admin Panel</h2>
+      <ul class="nav-links">
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="appointmentreq.html">Appointment Requests</a></li>
+        <li>
+          <a href="appointments.html" >Appointment Bookings</a>
+        </li>
+        <li><a href="jobsreq.html">Job Applications</a></li>
+        <li><a href="addevent.html" class="active">Add Event</a></li>
+      </ul>
+    </div>
+
     <form
+      id="eventForm"
       action="https://sumit11.serv00.net/prospine/insert_event.php"
       method="post"
     >
+      <input type="hidden" name="event_id" id="event_id" />
       <label>Title:</label>
-      <input type="text" name="title" required /><br />
+      <input type="text" name="title" id="title" required />
       <label>Description:</label>
-      <textarea name="description" required></textarea><br />
+      <textarea name="description" id="description" required></textarea>
       <label>Date:</label>
-      <input type="date" name="event_date" required /><br />
+      <input type="date" name="event_date" id="event_date" required />
       <label>Image URL:</label>
-      <input type="text" name="image_url" required /><br />
+      <input type="text" name="image_url" id="image_url" required />
       <button type="submit">Submit</button>
     </form>
+
+    <div class="events-container" id="eventsContainer">
+      <h2>Events</h2>
+    </div>
+
+    <script>
+      // Handle form submission for adding a new event
+      document
+        .getElementById("eventForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent default form submission
+
+          const form = this;
+          const formData = new FormData(form);
+
+          fetch(form.action, {
+            method: "POST",
+            body: formData,
+          })
+            .then((response) => {
+              console.log("Response Status:", response.status); // Debug status
+              if (!response.ok) {
+                throw new Error(`HTTP Error: ${response.status}`);
+              }
+              return response.json(); // Expect JSON response
+            })
+            .then((data) => {
+              console.log("Response Data:", data); // Debug response data
+              if (data.success) {
+                alert("Event added successfully!"); // Show success message
+                form.reset(); // Clear the form
+                location.reload(); // Reload the page
+              } else {
+                alert(
+                  "Failed to add event: " + (data.message || "Unknown error")
+                );
+              }
+            })
+            .catch((error) => {
+              console.error("Error adding event:", error);
+              alert("An error occurred while adding the event.");
+            });
+        });
+
+      // Fetch events on page load
+      fetch("https://sumit11.serv00.net/prospine/fetch_events.php")
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`HTTP Error: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then((events) => {
+          const container = document.getElementById("eventsContainer");
+          container.innerHTML = "<h2>Events</h2>"; // Reset container content
+
+          events.forEach((event) => {
+            const eventCard = document.createElement("div");
+            eventCard.classList.add("event-card");
+            eventCard.innerHTML = `
+        <img src="${event.image_url}" alt="${event.title}">
+        <div class="text-container">
+          <h3>${event.title}</h3>
+          <p>${event.description}</p>
+          <p><strong>Date:</strong> ${event.event_date}</p>
+        </div>
+        <div class="buttons">
+          <button class="edit-btn" onclick="editEvent(${event.id}, '${event.title}', '${event.description}', '${event.event_date}', '${event.image_url}')">Edit</button>
+          <button class="delete-btn" onclick="deleteEvent(${event.id})">Delete</button>
+        </div>
+      `;
+            container.appendChild(eventCard);
+          });
+        })
+        .catch((error) => {
+          console.error("Error fetching events:", error);
+          document.getElementById("eventsContainer").innerHTML +=
+            "<p>Failed to load events.</p>";
+        });
+
+      function editEvent(id, title, description, event_date, image_url) {
+        document.getElementById("event_id").value = id;
+        document.getElementById("title").value = title;
+        document.getElementById("description").value = description;
+        document.getElementById("event_date").value = event_date;
+        document.getElementById("image_url").value = image_url;
+
+        const form = document.getElementById("eventForm");
+        form.action = "https://sumit11.serv00.net/prospine/edit_event.php";
+
+        form.onsubmit = function (event) {
+          event.preventDefault();
+
+          fetch(form.action, {
+            method: "POST",
+            body: new FormData(form),
+          })
+            .then((response) => {
+              console.log("Response Status:", response.status); // Log status code
+              console.log("Response OK:", response.ok); // Log if response is OK
+              if (!response.ok) {
+                throw new Error(`HTTP Error: ${response.status}`);
+              }
+              return response.json(); // Parse JSON
+            })
+            .then((data) => {
+              console.log("Response Data:", data); // Log parsed JSON
+              if (data.success) {
+                alert("Event updated successfully!");
+                location.reload();
+              } else {
+                alert(
+                  "Failed to update event: " + (data.message || "Unknown error")
+                );
+              }
+            })
+            .catch((error) => {
+              console.error("Error updating event:", error); // Log full error
+              alert("An error occurred while updating the event.");
+            });
+        };
+      }
+
+      function deleteEvent(id) {
+        if (confirm("Are you sure you want to delete this event?")) {
+          fetch(
+            `https://sumit11.serv00.net/prospine/delete_event.php?id=${id}`,
+            {
+              method: "GET",
+            }
+          )
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error(`HTTP Error: ${response.status}`);
+              }
+              return response.json();
+            })
+            .then((data) => {
+              if (data.success) {
+                alert("Event deleted successfully!");
+                location.reload(); // Reload only on success
+              } else {
+                alert(
+                  "Failed to delete event: " + (data.message || "Unknown error")
+                );
+              }
+            })
+            .catch((error) => {
+              console.error("Error deleting event:", error);
+              alert("An error occurred while deleting the event.");
+            });
+        }
+      }
+    </script>
   </body>
 </html>

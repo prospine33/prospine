@@ -61,6 +61,14 @@
         background-color: #eeeeee69;
         color: rgb(255, 81, 0);
       }
+
+      .active {
+        background-color: #eeeeee69;
+      }
+
+      .nav-links .active {
+        color: rgb(255, 81, 0);
+      }
       .main-content {
         margin-left: 270px;
         padding: 20px;
@@ -95,6 +103,17 @@
       }
       .data-section {
         margin-top: 30px;
+      }
+
+      .tables {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        gap: 20px;
+      }
+
+      .table {
+        width: 90%;
       }
       .data-section h2 {
         margin-bottom: 10px;
@@ -134,12 +153,12 @@
   <body>
     <!-- Sidebar -->
     <div class="sidebar">
-        <div class="logo">
-            <img src="../image/logo.png" alt="logo">
-        </div>
+      <div class="logo">
+        <img src="../image/logo.png" alt="logo" />
+      </div>
       <h2>Admin Panel</h2>
       <ul class="nav-links">
-        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="index.html" class="active">Dashboard</a></li>
         <li><a href="appointmentreq.html">Appointment Requests</a></li>
         <li><a href="appointments.html">Appointment Bookings</a></li>
         <li><a href="jobsreq.html">Job Applications</a></li>
@@ -171,7 +190,9 @@
 
       <!-- Data Sections -->
       <div class="data-section">
-        <h2>Appointment Bookings</h2>
+        <a href="appointments.html"
+          ><h2 style="color: #000">Appointment Bookings</h2></a
+        >
         <table class="data-table">
           <thead>
             <tr>
@@ -179,48 +200,65 @@
               <th>Full Name</th>
               <th>Consultation Type</th>
               <th>Phone</th>
+              <th>Email</th>
               <th>Age</th>
               <th>Gender</th>
               <th>Contact Method</th>
+              <th>Status</th>
               <th>Submission Date</th>
             </tr>
           </thead>
           <tbody id="appointmentBookingsTable"></tbody>
         </table>
-        <br>
-        <h2>Appointment Requests</h2>
-        <table class="data-table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Full Name</th>
-              <th>Phone</th>
-              <th>Submission Date</th>
-            </tr>
-          </thead>
-          <tbody id="appointmentRequestsTable"></tbody>
-        </table>
-        <br>
-        <h2>Job Applications</h2>
-        <table class="data-table">
-          <thead>
-            <tr>
-              <th>Full Name</th>
-              <th>Email</th>
-              <th>Phone</th>
-              <th>Message</th>
-              <th>Submission Date</th>
-            </tr>
-          </thead>
-          <tbody id="jobApplicationsTable"></tbody>
-        </table>
+        <br />
+        <div class="tables">
+          <div class="table">
+            <a href="appointmentreq.html"
+              ><h2 style="color: #000">Appointment Requests</h2></a
+            >
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Full Name</th>
+                  <th>Phone</th>
+                  <th>Status</th>
+                  <th>Submission Date</th>
+                </tr>
+              </thead>
+              <tbody id="appointmentRequestsTable"></tbody>
+            </table>
+          </div>
+          <br />
+          <div class="table">
+            <a href="jobsreq.html"
+              ><h2 style="color: #000">Job Applications</h2></a
+            >
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Full Name</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Message</th>
+                  <th>Status</th>
+                  <th>Submission Date</th>
+                </tr>
+              </thead>
+              <tbody id="jobApplicationsTable"></tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
 
     <script>
       async function fetchData() {
         try {
-          let response = await fetch("https://sumit11.serv00.net/prospine/dash.php");
+          let response = await fetch(
+            "https://sumit11.serv00.net/prospine/dash.php"
+          );
           if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
           }
@@ -228,33 +266,46 @@
           console.log("Fetched Data:", data); // For debugging
 
           // Update card counts
-          document.getElementById("appointments-count").textContent = data.appointments.length || 0;
-          document.getElementById("bookings-count").textContent = data.appointmentsBooking?.length || 0;
-          document.getElementById("jobs-count").textContent = data.jobs.length || 0;
+          document.getElementById("appointments-count").textContent =
+            data.appointments.length || 0;
+          document.getElementById("bookings-count").textContent =
+            data.appointmentsBooking?.length || 0;
+          document.getElementById("jobs-count").textContent =
+            data.jobs.length || 0;
 
           // Populate Appointment Bookings table
-          let bookingsTable = document.getElementById("appointmentBookingsTable");
+          let bookingsTable = document.getElementById(
+            "appointmentBookingsTable"
+          );
           bookingsTable.innerHTML = "";
-          if (data.appointmentsBooking && Array.isArray(data.appointmentsBooking)) {
+          if (
+            data.appointmentsBooking &&
+            Array.isArray(data.appointmentsBooking)
+          ) {
             data.appointmentsBooking.forEach((app) => {
               let row = `<tr>
                 <td>${app.id || "--"}</td>
                 <td>${app.fullName || "--"}</td>
                 <td>${app.consultationType || "--"}</td>
                 <td>${app.phone || "--"}</td>
+                <td>${app.email || "--"}</td>
                 <td>${app.age || "--"}</td>
                 <td>${app.gender || "--"}</td>
                 <td>${app.contactMethod || "--"}</td>
+                <td>${app.status || "--"}</td>
                 <td>${app.created_at || "--"}</td>
               </tr>`;
               bookingsTable.innerHTML += row;
             });
           } else {
-            bookingsTable.innerHTML = "<tr><td colspan='8'>No bookings available</td></tr>";
+            bookingsTable.innerHTML =
+              "<tr><td colspan='8'>No bookings available</td></tr>";
           }
 
           // Populate Appointment Requests table
-          let requestsTable = document.getElementById("appointmentRequestsTable");
+          let requestsTable = document.getElementById(
+            "appointmentRequestsTable"
+          );
           requestsTable.innerHTML = "";
           if (data.appointments && Array.isArray(data.appointments)) {
             data.appointments.forEach((app) => {
@@ -262,12 +313,14 @@
                 <td>${app.id || "--"}</td>
                 <td>${app.name || "--"}</td>
                 <td>${app.phone || "--"}</td>
+                <td>${app.status || "--"}</td>
                 <td>${app.created_at || "--"}</td>
               </tr>`;
               requestsTable.innerHTML += row;
             });
           } else {
-            requestsTable.innerHTML = "<tr><td colspan='4'>No requests available</td></tr>";
+            requestsTable.innerHTML =
+              "<tr><td colspan='4'>No requests available</td></tr>";
           }
 
           // Populate Job Applications table
@@ -276,23 +329,27 @@
           if (data.jobs && Array.isArray(data.jobs)) {
             data.jobs.forEach((job) => {
               let row = `<tr>
+                <td>${job.id || "--"}</td>
                 <td>${job.full_name || "--"}</td>
                 <td>${job.email || "--"}</td>
                 <td>${job.phone || "--"}</td>
                 <td>${job.message || "--"}</td>
+                <td>${job.status || "--"}</td>
                 <td>${job.submission_date || "--"}</td>
               </tr>`;
               jobTable.innerHTML += row;
             });
           } else {
-            jobTable.innerHTML = "<tr><td colspan='5'>No applications available</td></tr>";
+            jobTable.innerHTML =
+              "<tr><td colspan='5'>No applications available</td></tr>";
           }
-
         } catch (error) {
           console.error("Error fetching data:", error);
           // Display error message on the page
           document.querySelectorAll(".data-table tbody").forEach((tbody) => {
-            tbody.innerHTML = `<tr><td colspan="${tbody.parentElement.querySelectorAll('th').length}">Error loading data: ${error.message}</td></tr>`;
+            tbody.innerHTML = `<tr><td colspan="${
+              tbody.parentElement.querySelectorAll("th").length
+            }">Error loading data: ${error.message}</td></tr>`;
           });
         }
       }

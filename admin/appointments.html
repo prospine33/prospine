@@ -3,82 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../image/favicon.png" type="image/x-icon" />
     <title>Admin Panel - Prospine</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background: #f4f4f4;
-        margin: 0;
-        padding: 0;
-      }
-      .container {
-        max-width: 90%;
-        margin: 40px auto;
-        padding: 20px;
-        background: white;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      }
-      h2 {
-        text-align: center;
-        color: #333;
-      }
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-      }
-      th,
-      td {
-        padding: 12px;
-        border: 1px solid #ddd;
-        text-align: left;
-      }
-      th {
-        background: #007bff;
-        color: white;
-      }
-      tbody tr:nth-child(even) {
-        background: #f9f9f9;
-      }
-      
-      /* Responsive Styles */
-      @media (max-width: 768px) {
-        table {
-          display: none;
-        }
-        #appointmentCards {
-          display: block;
-        }
-      }
-      @media (min-width: 769px) {
-        #appointmentCards {
-          display: none;
-        }
-      }
-      .card {
-        background: white;
-        margin: 10px 0;
-        padding: 10px;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        cursor: pointer;
-      }
-      .card .details {
-        display: none;
-        margin-top: 10px;
-      }
-    </style>
+    <link rel="stylesheet" href="style/appointment.css" />
   </head>
   <body>
+    <div class="sidebar">
+      <div class="logo">
+        <img src="../image/logo.png" alt="logo" />
+      </div>
+      <h2>Admin Panel</h2>
+      <ul class="nav-links">
+        <li><a href="index.html">Dashboard</a></li>
+        <li>
+          <a href="appointmentreq.html">Appointment Requests</a>
+        </li>
+        <li>
+          <a href="appointments.html" class="active">Appointment Bookings</a>
+        </li>
+        <li><a href="jobsreq.html">Job Applications</a></li>
+        <li><a href="addevent.html">Add Event</a></li>
+      </ul>
+    </div>
     <div class="container">
-      <h2>Appointment Requests</h2>
+      <h2>Appointment Bookings</h2>
       <table>
         <thead>
           <tr>
             <th>ID</th>
             <th>Full Name</th>
-            <th>Consultation Type</th>
+            <th class="med2">Consultation</th>
             <th>Phone</th>
             <th>Email</th>
             <th>Gender</th>
@@ -87,7 +41,9 @@
             <th>Address</th>
             <th>Occupation</th>
             <th>Condition</th>
-            <th>Contact Method</th>
+            <th>Contact</th>
+            <th>Status</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody id="appointmentTable"></tbody>
@@ -103,54 +59,162 @@
             const table = document.getElementById("appointmentTable");
             const cardsContainer = document.getElementById("appointmentCards");
             if (data.error) {
-              table.innerHTML = `<tr><td colspan="10">Error fetching data</td></tr>`;
+              table.innerHTML = `<tr><td colspan="13">Error fetching data</td></tr>`;
               return;
             }
 
             data.forEach((appointment) => {
               const row = `<tr>
-                    <td>${appointment.id}</td>
-                    <td>${appointment.fullName}</td>
-                    <td>${appointment.consultationType}</td>
-                    <td>${appointment.phone}</td>
-                    <td>${appointment.email}</td>
-                    <td>${appointment.gender}</td>
-                    <td>${appointment.dob}</td>
-                    <td>${appointment.age}</td>
-                    <td>${appointment.address}</td>
-                    <td>${appointment.occupation}</td>
-                    <td>${appointment.medical_condition}</td>
-                    <td>${appointment.contactMethod}</td>
-                </tr>`;
+                            <td>${appointment.id}</td>
+                            <td>${appointment.fullName}</td>
+                            <td class="med2">${
+                              appointment.consultationType
+                            }</td>
+                            <td>${appointment.phone}</td>
+                            <td>${appointment.email}</td>
+                            <td>${appointment.gender}</td>
+                            <td>${appointment.dob}</td>
+                            <td>${appointment.age}</td>
+                            <td>${appointment.address}</td>
+                            <td>${appointment.occupation}</td>
+                            <td class="med">${
+                              appointment.medical_condition
+                            }</td>
+                            <td>${appointment.contactMethod}</td>
+                            <td>
+                            <select onchange="updateStatus(${
+                              appointment.id
+                            }, this.value)">
+                                <option value="pending" ${
+                                  appointment.status === "pending"
+                                    ? "selected"
+                                    : ""
+                                }>Pending</option>
+                                <option value="confirmed" ${
+                                  appointment.status === "confirmed"
+                                    ? "selected"
+                                    : ""
+                                }>Confirmed</option>
+                                <option value="cancelled" ${
+                                  appointment.status === "cancelled"
+                                    ? "selected"
+                                    : ""
+                                }>Cancelled</option>
+                            </select>
+                        </td>
+                        <td> <button
+            onclick="sendMail(${appointment.id}, '${appointment.status}')"
+            ${
+              appointment.status !== "confirmed" ? "disabled" : ""
+            }> Send Mail</button></td>
+                        </tr>`;
               table.innerHTML += row;
 
               const card = document.createElement("div");
               card.classList.add("card");
               card.innerHTML = `
-                <div><strong>${appointment.fullName}</strong> - ${appointment.consultationType}</div>
-                <div class="details">
-                  <p><strong>Phone:</strong> ${appointment.phone}</p>
-                  <p><strong>Email:</strong> ${appointment.email}</p>
-                  <p><strong>Gender:</strong> ${appointment.gender}</p>
-                  <p><strong>DOB:</strong> ${appointment.dob}</p>
-                  <p><strong>Age:</strong> ${appointment.age}</p>
-                  <p><strong>Address:</strong> ${appointment.address}</p>
-                  <p><strong>Occupation:</strong> ${appointment.occupation}</p>
-                  <p><strong>Condition:</strong> ${appointment.medical_condition}</p>
-                  <p><strong>Contact Method:</strong> ${appointment.contactMethod}</p>
-                </div>
-              `;
+                        <div><strong>${appointment.fullName}</strong> - ${
+                appointment.consultationType
+              }</div>
+                        <div class="details">
+                          <p><strong>Phone:</strong> ${appointment.phone}</p>
+                          <p><strong>Email:</strong> ${appointment.email}</p>
+                          <p><strong>Gender:</strong> ${appointment.gender}</p>
+                          <p><strong>DOB:</strong> ${appointment.dob}</p>
+                          <p><strong>Age:</strong> ${appointment.age}</p>
+                          <p><strong>Address:</strong> ${
+                            appointment.address
+                          }</p>
+                          <p><strong>Occupation:</strong> ${
+                            appointment.occupation
+                          }</p>
+                          <p><strong>Condition:</strong> ${
+                            appointment.medical_condition
+                          }</p>
+                          <p><strong>Contact Method:</strong> ${
+                            appointment.contactMethod
+                          }</p>
+                          <p><strong>Status:</strong>
+                            <select onchange="updateStatus(${
+                              appointment.id
+                            }, this.value)">
+                              <option value="Pending" ${
+                                appointment.status === "Pending"
+                                  ? "selected"
+                                  : ""
+                              }>Pending</option>
+                              <option value="Confirmed" ${
+                                appointment.status === "Confirmed"
+                                  ? "selected"
+                                  : ""
+                              }>Confirmed</option>
+                              <option value="cancelled" ${
+                                appointment.status === "cancelled"
+                                  ? "selected"
+                                  : ""
+                              }>Cancelled</option>
+                            </select>
+                          </p>
+                        </div>
+                      `;
               card.addEventListener("click", function () {
                 const details = this.querySelector(".details");
-                details.style.display = details.style.display === "block" ? "none" : "block";
+                details.style.display =
+                  details.style.display === "block" ? "none" : "block";
               });
               cardsContainer.appendChild(card);
             });
           })
           .catch(() => {
-            document.getElementById("appointmentTable").innerHTML = `<tr><td colspan="10">Error loading data</td></tr>`;
+            document.getElementById(
+              "appointmentTable"
+            ).innerHTML = `<tr><td colspan="13">Error loading data</td></tr>`;
           });
       });
+
+      function updateStatus(id, status) {
+        console.log("Updating:", id, status);
+        fetch("https://sumit11.serv00.net/prospine/update_statuss.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id, status }),
+        })
+          .then((response) => response.text()) // Log full response
+          .then((text) => {
+            console.log("Update Response:", text);
+            return JSON.parse(text);
+          })
+          .then((data) => console.log(data))
+          .catch((error) => console.error("Error updating status:", error));
+      }
+
+      function sendMail(id, status) {
+        if (status !== "confirmed") {
+          alert("Mail can only be sent for confirmed appointments.");
+          return;
+        }
+
+        fetch("https://sumit11.serv00.net/prospine/send_mail.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Server Response:", data); // Log server response for debugging
+
+            if (data.status === "success") {
+              // Check `status`, not `success`
+              alert("Mail sent successfully!");
+            } else {
+              alert("Failed to send mail.");
+            }
+          })
+          .catch((error) => {
+            console.error("Error sending mail:", error);
+            alert("Error sending mail.");
+          });
+      }
     </script>
   </body>
 </html>
