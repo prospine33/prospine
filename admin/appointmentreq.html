@@ -1,58 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../image/favicon.png" type="image/x-icon" />
     <title>Basic Appointments</title>
     <style>
-        body { font-family: Arial, sans-serif; background-color: #f8f9fa; margin: 0; padding: 20px; }
-        .container { max-width: 800px; margin: auto; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
-        h2 { text-align: center; color: #333; }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        th, td { padding: 10px; text-align: left; border-bottom: 1px solid #ddd; }
-        th { background: #007bff; color: white; }
-        tr:hover { background: #f1f1f1; }
-        .back-btn { display: block; width: fit-content; margin: 20px auto; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; text-align: center; }
-        .back-btn:hover { background: #0056b3; }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+      body {
+        display: flex;
+        min-height: 100vh;
+        background: linear-gradient(to right, #ffffff 0%, #0cac9c);
+      }
+      .sidebar {
+        width: 250px;
+        background-color: #0cac9c7c;
+        color: rgb(0, 0, 0);
+        padding: 20px;
+        position: fixed;
+        height: 100vh;
+        border-radius: 0px 40px 40px 0px;
+        box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.5);
+      }
+
+      .logo {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .logo img {
+        width: 200px;
+        /* height: 150px; */
+      }
+      .sidebar h2 {
+        margin-bottom: 20px;
+      }
+      .nav-links {
+        list-style: none;
+        padding: 0;
+      }
+      .nav-links li {
+        margin: 10px 0;
+      }
+      .nav-links a {
+        text-decoration: none;
+        color: rgb(0, 0, 0);
+        font-size: 1.1em;
+        display: block;
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 5px;
+        transition: 0.3s;
+      }
+      .nav-links a:hover {
+        background-color: #eeeeee69;
+        color: rgb(255, 81, 0);
+      }
+
+      .active{
+        background-color: #eeeeee69;
+      }
+
+      .nav-links .active {
+        color: rgb(255, 81, 0);
+      }
+      .container {
+        width: 80%;
+        /* max-width: x; */
+        margin: 20px auto;
+        margin-left: 290px;
+        height: 1100px;
+        overflow-y: auto;
+        background: #ffffffa8;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      }
+      h2 {
+        text-align: center;
+        color: #333;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      th,
+      td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #b3b3b3;
+      }
+      th {
+        background: #007bff;
+        color: white;
+      }
+      tr:hover {
+        background: #ffffff;
+      }
+      select {
+        width: 60%;
+        background-color: #fff;
+        border: 1px solid #cfcfcf;
+        border-radius: 5px;
+        padding: 5px;
+      }
+      option {
+        background: #fff;
+        color: #333;
+        border: none;
+      }
     </style>
-</head>
-<body>
-
-<div class="container">
-    <h2>Basic Appointments</h2>
-    <table id="appointments-table">
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="logo">
+        <img src="../image/logo.png" alt="logo" />
+      </div>
+      <h2>Admin Panel</h2>
+      <ul class="nav-links">
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="appointmentreq.html" class="active">Appointment Requests</a></li>
+        <li><a href="appointments.html">Appointment Bookings</a></li>
+        <li><a href="jobsreq.html">Job Applications</a></li>
+        <li><a href="addevent.html">Add Event</a></li>
+      </ul>
+    </div>
+    <div class="container">
+      <h2>Appointments Requested</h2>
+      <table id="appointments-table">
         <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Phone</th>
-            <th>Submitted On</th>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Status</th>
+          <th>Submitted On</th>
         </tr>
-    </table>
-    <!-- <a href="#" class="back-btn">Back to Home</a> -->
-</div>
+      </table>
+    </div>
 
-<script>
-async function fetchAppointments() {
-    try {
-        let response = await fetch("https://sumit11.serv00.net/prospine/appointments.php");
-        let data = await response.json();
+    <script>
+      async function fetchAppointments() {
+        try {
+          let response = await fetch(
+            "https://sumit11.serv00.net/prospine/appointments.php"
+          );
+          let data = await response.json();
 
-        let table = document.getElementById("appointments-table");
-        data.forEach(appointment => {
+          let table = document.getElementById("appointments-table");
+          data.forEach((appointment) => {
             let row = table.insertRow();
-            row.innerHTML = `<td>${appointment.id}</td>
-                             <td>${appointment.name}</td>
-                             <td>${appointment.phone}</td>
-                             <td>${appointment.created_at}</td>`;
-        });
-    } catch (error) {
-        console.error("Error fetching data:", error);
-    }
-}
+            row.innerHTML = `
+                <td>${appointment.id}</td>
+                <td>${appointment.name}</td>
+                <td>${appointment.phone}</td>
+                <td>
+                    <select onchange="updateStatus(${
+                      appointment.id
+                    }, this.value)">
+                        <option value="pending" ${
+                          appointment.status === "pending" ? "selected" : ""
+                        }>Pending</option>
+                        <option value="confirmed" ${
+                          appointment.status === "confirmed" ? "selected" : ""
+                        }>Confirmed</option>
+                        <option value="cancelled" ${
+                          appointment.status === "cancelled" ? "selected" : ""
+                        }>Cancelled</option>
+                    </select>
+                </td>
+                <td>${appointment.created_at}</td>
+            `;
+          });
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      }
 
-// Load data when page loads
-fetchAppointments();
-</script>
+      // Function to update status
+      async function updateStatus(id, newStatus) {
+        try {
+          let response = await fetch(
+            "https://sumit11.serv00.net/prospine/update_status.php",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ id, status: newStatus }),
+            }
+          );
 
-</body>
+          let result = await response.json();
+          if (result.success) {
+            alert("Status updated successfully!");
+          } else {
+            alert("Failed to update status.");
+          }
+        } catch (error) {
+          console.error("Error updating status:", error);
+        }
+      }
+
+      // Load data when page loads
+      fetchAppointments();
+    </script>
+  </body>
 </html>

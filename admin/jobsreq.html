@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../image/favicon.png" type="image/x-icon" />
+    <title>Job Applications</title>
+    <link rel="stylesheet" href="style/appointment.css" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="logo">
+        <img src="../image/logo.png" alt="logo" />
+      </div>
+      <h2>Admin Panel</h2>
+      <ul class="nav-links">
+        <li><a href="index.html">Dashboard</a></li>
+        <li>
+          <a href="appointmentreq.html">Appointment Requests</a>
+        </li>
+        <li>
+          <a href="appointments.html">Appointment Bookings</a>
+        </li>
+        <li><a href="jobsreq.html" class="active">Job Applications</a></li>
+        <li><a href="addevent.html">Add Event</a></li>
+      </ul>
+    </div>
+    <div class="container">
+      <h2>Job Applications</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Message</th>
+            <th>Status</th>
+            <th>Submission Date</th>
+          </tr>
+        </thead>
+        <tbody id="jobTable">
+          <tr>
+            <td colspan="5">Loading data...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+      fetch("https://sumit11.serv00.net/prospine/fetch_jobs.php") // Change to your actual PHP server URL
+        .then((response) => response.json())
+        .then((data) => {
+          let tableBody = document.getElementById("jobTable");
+          tableBody.innerHTML = "";
+
+          if (data.length === 0) {
+            tableBody.innerHTML =
+              "<tr><td colspan='5'>No job applications found.</td></tr>";
+            return;
+          }
+
+          data.forEach((job) => {
+            let row = `<tr data-id="${job.id}">
+                      <td>${job.id}</td>
+                      <td>${job.full_name}</td>
+                      <td>${job.email}</td>
+                      <td>${job.phone}</td>
+                      <td>${job.message}</td>
+                      <td>
+                        <select onchange="updateStatus(${job.id}, this.value)">
+                            <option value="pending" ${
+                              job.status === "pending" ? "selected" : ""
+                            }>Pending</option>
+                            <option value="confirmed" ${
+                              job.status === "confirmed" ? "selected" : ""
+                            }>Confirmed</option>
+                            <option value="cancelled" ${
+                              job.status === "cancelled" ? "selected" : ""
+                            }>Cancelled</option>
+                        </select>
+                      </td>
+                      <td>${job.submission_date}</td>
+                  </tr>`;
+            tableBody.innerHTML += row;
+          });
+        });
+      function updateStatus(id, status) {
+        console.log("Updating:", id, status);
+        fetch("https://sumit11.serv00.net/prospine/update_job_status.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id, status }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Update Response:", data);
+            if (data.status === "success") {
+              // Find the select element and update the value
+              const selectElement = document.querySelector(
+                `tr[data-id="${id}"] select`
+              );
+              if (selectElement) {
+                selectElement.value = status;
+              }
+            }
+          })
+          .catch((error) => console.error("Error updating status:", error));
+      }
+    </script>
+  </body>
+</html>
